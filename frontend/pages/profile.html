@@ -64,17 +64,17 @@
       <div class="skeleton-shimmer skeleton-title" id="displayNameSkeleton" style="width:180px;height:24px;margin:0 auto 0.5rem auto;"></div>
       <h2 id="profileDisplayName" style="display:none;"></h2>
       <div class="skeleton-shimmer skeleton-text" id="emailSkeleton" style="width:140px;height:14px;margin:0 auto;"></div>
-      <p id="profileEmail" style="color:#888;font-size:0.9rem;display:none;"></p>
+      <p id="profileEmail" style="font-size:0.9rem;display:none;" class="text-sub-styled"></p>
     </div>
     <form id="profileForm" onsubmit="event.preventDefault();saveProfile();" style="display:flex;flex-direction:column;gap:1.5rem;">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
-        <div><label style="display:block;margin-bottom:0.3rem;color:#aaa;">First Name</label><input type="text" id="profFirst" class="filter-input" style="width:100%;" /></div>
-        <div><label style="display:block;margin-bottom:0.3rem;color:#aaa;">Last Name</label><input type="text" id="profLast" class="filter-input" style="width:100%;" /></div>
+        <div><label style="display:block;margin-bottom:0.3rem;" class="form-label-styled">First Name</label><input type="text" id="profFirst" class="filter-input" style="width:100%;" /></div>
+        <div><label style="display:block;margin-bottom:0.3rem;" class="form-label-styled">Last Name</label><input type="text" id="profLast" class="filter-input" style="width:100%;" /></div>
       </div>
-      <div><label style="display:block;margin-bottom:0.3rem;color:#aaa;">Email</label><input type="email" id="profEmail" class="filter-input" style="width:100%;" /></div>
-      <div><label style="display:block;margin-bottom:0.3rem;color:#aaa;">Phone</label><input type="tel" id="profPhone" class="filter-input" style="width:100%;" /></div>
-      <div><label style="display:block;margin-bottom:0.3rem;color:#aaa;">Address</label><input type="text" id="profAddress" class="filter-input" style="width:100%;" /></div>
-      <div><label style="display:block;margin-bottom:0.3rem;color:#aaa;">City</label><input type="text" id="profCity" value="Surat" class="filter-input" style="width:100%;" /></div>
+      <div><label style="display:block;margin-bottom:0.3rem;" class="form-label-styled">Email</label><input type="email" id="profEmail" class="filter-input" style="width:100%;" /></div>
+      <div><label style="display:block;margin-bottom:0.3rem;" class="form-label-styled">Phone</label><input type="tel" id="profPhone" class="filter-input" style="width:100%;" /></div>
+      <div><label style="display:block;margin-bottom:0.3rem;" class="form-label-styled">Address</label><input type="text" id="profAddress" class="filter-input" style="width:100%;" /></div>
+      <div><label style="display:block;margin-bottom:0.3rem;" class="form-label-styled">City</label><input type="text" id="profCity" value="Surat" class="filter-input" style="width:100%;" /></div>
       <button type="submit" class="btn-primary btn-block" style="padding:1rem;font-weight:700;border-radius:50px;"><i class="fas fa-save"></i> Save Profile</button>
     </form>
     <div style="margin-top:2rem;text-align:center;"><a href="orders.html" class="btn-outline" style="padding:0.8rem 2rem;border-radius:50px;text-decoration:none;"><i class="fas fa-box"></i> View My Orders</a></div>

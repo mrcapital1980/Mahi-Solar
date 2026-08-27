@@ -64,12 +64,12 @@
         <div id="postImage" style="margin-bottom:2rem;border-radius:16px;overflow:hidden;">
             <div class="skeleton-shimmer skeleton-image" id="postImageSkeleton" style="width:100%;height:350px;"></div>
         </div>
-        <div class="blog-meta" id="postMeta" style="display:flex;gap:1.5rem;font-size:0.85rem;color:#888;margin-bottom:1.5rem;">
+        <div class="blog-meta" id="postMeta" style="display:flex;gap:1.5rem;font-size:0.85rem;margin-bottom:1.5rem;" class="text-sub-styled">
             <div class="skeleton-shimmer skeleton-rect" id="metaSkeleton" style="width:250px;height:14px;"></div>
         </div>
         <div class="skeleton-shimmer skeleton-title" id="titleSkeleton" style="width:70%;height:40px;margin-bottom:2rem;"></div>
         <h1 id="postTitle" style="font-family:var(--font-primary);font-size:2.5rem;margin-bottom:2rem;display:none;">Loading...</h1>
-        <div id="postContent" style="line-height:1.8;color:rgba(255,255,255,0.85);font-size:1.05rem;">
+        <div id="postContent" style="line-height:1.8;font-size:1.05rem;" class="text-body-styled">
             <div class="skeleton-shimmer skeleton-text" style="width:100%;height:14px;margin-bottom:10px;"></div>
             <div class="skeleton-shimmer skeleton-text" style="width:100%;height:14px;margin-bottom:10px;"></div>
             <div class="skeleton-shimmer skeleton-text" style="width:90%;height:14px;margin-bottom:10px;"></div>
@@ -172,7 +172,7 @@ fetch(`${API_BASE_URL}/blog/${slug}/?format=json`, { headers: getAuthHeaders() }
     data.related.forEach(r => {
         const imgSrc = getImageUrl(r.image);
         const img = imgSrc ? `<img src="${imgSrc}" alt="${r.title}" style="width:100%;height:160px;object-fit:cover;border-radius:8px 8px 0 0;" />` : '';
-        relGrid.innerHTML += `<div style="background:rgba(255,255,255,0.01);border:1px solid rgba(255,255,255,0.05);border-radius:8px;overflow:hidden;">${img}<div style="padding:1rem;"><h4 style="margin-bottom:0.5rem;"><a href="blog-detail.html?slug=${r.slug}" style="color:#fff;text-decoration:none;">${r.title}</a></h4><p style="font-size:0.85rem;color:#888;">${r.created_at}</p></div></div>`;
+        relGrid.innerHTML += `<div style="background:rgba(255,255,255,0.01);border:1px solid rgba(255,255,255,0.05);border-radius:8px;overflow:hidden;">${img}<div style="padding:1rem;"><h4 style="margin-bottom:0.5rem;"><a href="blog-detail.html?slug=${r.slug}" style="color:#fff;text-decoration:none;">${r.title}</a></h4><p style="font-size:0.85rem;" class="text-sub-styled">${r.created_at}</p></div></div>`;
     });
 })
 .catch(err => { console.error(err); document.getElementById('postTitle').textContent = "Failed to load post."; });

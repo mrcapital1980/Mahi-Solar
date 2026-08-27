@@ -75,7 +75,7 @@
           <input type="number" id="monthlyBill" placeholder="e.g. 3000" min="0" class="calc-input" style="width:100%;" />
         </div>
         <div class="calc-divider" style="text-align:center; margin: 1.5rem 0; position:relative;">
-          <span style="background:var(--charcoal-grey); padding: 0 1rem; color:#888; font-weight:600;">OR</span>
+          <span style="background:var(--charcoal-grey); padding: 0 1rem;  font-weight:600;" class="text-sub-styled">OR</span>
         </div>
         <div class="form-group" style="margin-bottom: 2rem;">
           <label style="display:block; margin-bottom:0.5rem; font-weight:600;">Monthly Consumption (Units/kWh)</label>
@@ -92,38 +92,38 @@
         <div class="results-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1.5rem; margin-bottom: 2rem;">
           <div class="result-card highlight-card" style="background: rgba(212, 175, 55, 0.05); border-color: var(--solar-gold-glow);">
             <div class="result-icon" style="color: var(--solar-gold); font-size:1.5rem;"><i class="fas fa-solar-panel"></i></div>
-            <div class="result-label" style="font-size:0.85rem; color:#aaa;">Recommended System</div>
+            <div class="result-label" style="font-size:0.85rem; " class="form-label-styled">Recommended System</div>
             <div class="result-value" style="font-size:1.8rem; font-weight:700;"><span id="resKw">—</span> kW</div>
           </div>
           <div class="result-card">
-            <div class="result-label" style="font-size:0.85rem; color:#aaa;">Total Cost</div>
+            <div class="result-label" style="font-size:0.85rem; " class="form-label-styled">Total Cost</div>
             <div class="result-value" style="font-size:1.8rem; font-weight:700;">₹<span id="resCost">—</span></div>
             <div class="result-note" style="font-size:0.75rem; color:#666;">Before subsidy</div>
           </div>
           <div class="result-card green-card" style="background: rgba(40, 167, 69, 0.05); border-color: rgba(40,167,69,0.2);">
-            <div class="result-label" style="font-size:0.85rem; color:#aaa;">Govt. Subsidy</div>
+            <div class="result-label" style="font-size:0.85rem; " class="form-label-styled">Govt. Subsidy</div>
             <div class="result-value" style="font-size:1.8rem; font-weight:700; color: #28a745;">₹<span id="resSubsidy">—</span></div>
             <div class="result-note" style="font-size:0.75rem; color:#666;">PM Surya Ghar Yojana</div>
           </div>
           <div class="result-card primary-card" style="background: rgba(212, 175, 55, 0.1); border-color: var(--solar-gold);">
-            <div class="result-label" style="font-size:0.85rem; color:#aaa;">Your Final Cost</div>
+            <div class="result-label" style="font-size:0.85rem; " class="form-label-styled">Your Final Cost</div>
             <div class="result-value" style="font-size:1.8rem; font-weight:700; color: var(--solar-gold);">₹<span id="resFinal">—</span></div>
             <div class="result-note" style="font-size:0.75rem; color:#666;">After subsidy</div>
           </div>
           <div class="result-card">
-            <div class="result-label" style="font-size:0.85rem; color:#aaa;">Monthly Savings</div>
+            <div class="result-label" style="font-size:0.85rem; " class="form-label-styled">Monthly Savings</div>
             <div class="result-value" style="font-size:1.5rem; font-weight:700;">₹<span id="resMonthlySavings">—</span></div>
           </div>
           <div class="result-card">
-            <div class="result-label" style="font-size:0.85rem; color:#aaa;">Annual Savings</div>
+            <div class="result-label" style="font-size:0.85rem; " class="form-label-styled">Annual Savings</div>
             <div class="result-value" style="font-size:1.5rem; font-weight:700;">₹<span id="resAnnualSavings">—</span></div>
           </div>
           <div class="result-card">
-            <div class="result-label" style="font-size:0.85rem; color:#aaa;">Roof Area Needed</div>
+            <div class="result-label" style="font-size:0.85rem; " class="form-label-styled">Roof Area Needed</div>
             <div class="result-value" style="font-size:1.5rem; font-weight:700;"><span id="resRoof">—</span> sqft</div>
           </div>
           <div class="result-card">
-            <div class="result-label" style="font-size:0.85rem; color:#aaa;">Payback Period</div>
+            <div class="result-label" style="font-size:0.85rem; " class="form-label-styled">Payback Period</div>
             <div class="result-value" style="font-size:1.5rem; font-weight:700;"><span id="resRoi">—</span> years</div>
           </div>
         </div>

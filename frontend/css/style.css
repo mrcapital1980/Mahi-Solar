@@ -1355,5 +1355,59 @@ p, li, td {
   color: var(--solar-gold);
 }
 
+/* Dynamic Theme Text Helper Classes */
+.form-label-styled {
+  color: var(--text-secondary);
+  font-weight: 600;
+  transition: color var(--transition-snappy);
+}
+
+.text-sub-styled {
+  color: var(--text-muted);
+  transition: color var(--transition-snappy);
+}
+
+.text-body-styled {
+  color: var(--text-secondary);
+  transition: color var(--transition-snappy);
+}
+
+/* Light Theme Total Text Readability Override */
+[data-theme="light"] .form-label-styled,
+[data-theme="light"] label,
+[data-theme="light"] .form-group label {
+  color: #0F172A !important;
+}
+
+[data-theme="light"] .text-sub-styled,
+[data-theme="light"] .text-muted,
+[data-theme="light"] small {
+  color: #64748B !important;
+}
+
+[data-theme="light"] .text-body-styled,
+[data-theme="light"] p,
+[data-theme="light"] li,
+[data-theme="light"] td {
+  color: #334155 !important;
+}
+
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] h4,
+[data-theme="light"] h5,
+[data-theme="light"] h6,
+[data-theme="light"] .logo a,
+[data-theme="light"] .logo-text,
+[data-theme="light"] .user-btn,
+[data-theme="light"] .btn-icon,
+[data-theme="light"] .card h3,
+[data-theme="light"] .product-card h3,
+[data-theme="light"] .blog-card h2 {
+  color: #0F172A !important;
+}
+
+
 
 

@@ -93,7 +93,7 @@
 
             <!-- PRICE CONTAINER -->
             <div class="detail-price-box" style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2rem;">
-                <div style="font-size: 0.9rem; color: #aaa; margin-bottom: 0.5rem;">Price:</div>
+                <div style="font-size: 0.9rem;  margin-bottom: 0.5rem;" class="form-label-styled">Price:</div>
                 <div class="skeleton-shimmer skeleton-rect" id="priceSkeleton" style="width: 160px; height: 42px; margin-bottom: 0.5rem;"></div>
                 <div id="detailPriceRow" style="display: none; align-items: baseline; gap: 1rem;">
                     <span id="detailPriceCurrent" style="font-size: 2.5rem; font-weight: 700; color: var(--solar-gold);">₹—</span>
@@ -106,15 +106,15 @@
             <!-- META INFO TABLE -->
             <table class="specs-table" style="width: 100%; border-collapse: collapse; margin-bottom: 2rem;">
                 <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                    <td style="padding: 0.8rem 0; font-weight: 600; color: #aaa;">Brand</td>
+                    <td style="padding: 0.8rem 0; font-weight: 600; " class="form-label-styled">Brand</td>
                     <td id="detailBrand" style="padding: 0.8rem 0; text-align: right;"><div class="skeleton-shimmer skeleton-rect" style="width: 80px; height: 16px; margin-left: auto;"></div></td>
                 </tr>
                 <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                    <td style="padding: 0.8rem 0; font-weight: 600; color: #aaa;">Capacity / Wattage</td>
+                    <td style="padding: 0.8rem 0; font-weight: 600; " class="form-label-styled">Capacity / Wattage</td>
                     <td id="detailWattage" style="padding: 0.8rem 0; text-align: right;"><div class="skeleton-shimmer skeleton-rect" style="width: 60px; height: 16px; margin-left: auto;"></div></td>
                 </tr>
                 <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                    <td style="padding: 0.8rem 0; font-weight: 600; color: #aaa;">Warranty</td>
+                    <td style="padding: 0.8rem 0; font-weight: 600; " class="form-label-styled">Warranty</td>
                     <td id="detailWarranty" style="padding: 0.8rem 0; text-align: right;"><div class="skeleton-shimmer skeleton-rect" style="width: 70px; height: 16px; margin-left: auto;"></div></td>
                 </tr>
             </table>
@@ -130,7 +130,7 @@
             <div class="desc-box">
                 <h3 style="margin-bottom: 1rem;">Description</h3>
                 <div class="skeleton-shimmer skeleton-rect" id="descSkeleton" style="width: 100%; height: 60px;"></div>
-                <p id="detailDesc" style="line-height: 1.7; color: rgba(255,255,255,0.7); display: none;"></p>
+                <p id="detailDesc" style="line-height: 1.7;  display: none;" class="text-body-styled"></p>
             </div>
         </div>
     </div>
@@ -145,7 +145,7 @@
                 <h3>Submit Your Review</h3>
                 <form id="reviewSubmitForm" onsubmit="event.preventDefault(); submitReview();" style="margin-top: 1.5rem;">
                     <div class="form-group" style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; color: #aaa;">Rating (1 - 5 Stars)</label>
+                        <label style="display: block; margin-bottom: 0.5rem; " class="form-label-styled">Rating (1 - 5 Stars)</label>
                         <select id="revRating" class="filter-input" style="width: 100%; border-radius: 8px;" required>
                             <option value="5">★★★★★ (5/5)</option>
                             <option value="4">★★★★☆ (4/5)</option>
@@ -155,7 +155,7 @@
                         </select>
                     </div>
                     <div class="form-group" style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; color: #aaa;">Comment</label>
+                        <label style="display: block; margin-bottom: 0.5rem; " class="form-label-styled">Comment</label>
                         <textarea id="revComment" rows="4" class="filter-input" style="width: 100%; border-radius: 8px; resize: none;" placeholder="Write your feedback..." required></textarea>
                     </div>
                     <button type="submit" class="btn-primary btn-block">Submit Feedback</button>
@@ -369,7 +369,7 @@
                     <strong>${r.display_name}</strong>
                     <span>${stars}</span>
                   </div>
-                  <p style="color: rgba(255,255,255,0.8); line-height: 1.5; font-size:0.95rem;">${r.comment}</p>
+                  <p style=" line-height: 1.5; font-size:0.95rem;" class="text-body-styled">${r.comment}</p>
                   <span style="font-size:0.75rem; color:#666;">${r.created_at}</span>`;
                 revContainer.appendChild(card);
             });

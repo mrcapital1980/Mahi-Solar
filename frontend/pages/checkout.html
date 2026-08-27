@@ -66,17 +66,17 @@
             <h3 style="margin-bottom:1.5rem;"><i class="fas fa-truck" style="color:var(--solar-gold);"></i> Shipping Details</h3>
             <form id="checkoutForm" onsubmit="event.preventDefault(); submitCheckout();" style="display:flex;flex-direction:column;gap:1.2rem;">
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
-                    <div class="form-group"><label style="display:block;margin-bottom:0.3rem;color:#aaa;font-size:0.9rem;">Full Name *</label><input type="text" id="coName" class="filter-input" style="width:100%;" required /></div>
-                    <div class="form-group"><label style="display:block;margin-bottom:0.3rem;color:#aaa;font-size:0.9rem;">Phone *</label><input type="tel" id="coPhone" class="filter-input" style="width:100%;" required /></div>
+                    <div class="form-group"><label style="display:block;margin-bottom:0.3rem;font-size:0.9rem;" class="form-label-styled">Full Name *</label><input type="text" id="coName" class="filter-input" style="width:100%;" required /></div>
+                    <div class="form-group"><label style="display:block;margin-bottom:0.3rem;font-size:0.9rem;" class="form-label-styled">Phone *</label><input type="tel" id="coPhone" class="filter-input" style="width:100%;" required /></div>
                 </div>
-                <div class="form-group"><label style="display:block;margin-bottom:0.3rem;color:#aaa;font-size:0.9rem;">Email *</label><input type="email" id="coEmail" class="filter-input" style="width:100%;" required /></div>
-                <div class="form-group"><label style="display:block;margin-bottom:0.3rem;color:#aaa;font-size:0.9rem;">Delivery Address *</label><textarea id="coAddress" rows="3" class="filter-input" style="width:100%;resize:none;" required></textarea></div>
+                <div class="form-group"><label style="display:block;margin-bottom:0.3rem;font-size:0.9rem;" class="form-label-styled">Email *</label><input type="email" id="coEmail" class="filter-input" style="width:100%;" required /></div>
+                <div class="form-group"><label style="display:block;margin-bottom:0.3rem;font-size:0.9rem;" class="form-label-styled">Delivery Address *</label><textarea id="coAddress" rows="3" class="filter-input" style="width:100%;resize:none;" required></textarea></div>
                 <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;">
-                    <div class="form-group"><label style="display:block;margin-bottom:0.3rem;color:#aaa;font-size:0.9rem;">City *</label><input type="text" id="coCity" value="Surat" class="filter-input" style="width:100%;" required /></div>
-                    <div class="form-group"><label style="display:block;margin-bottom:0.3rem;color:#aaa;font-size:0.9rem;">State</label><input type="text" id="coState" value="Gujarat" class="filter-input" style="width:100%;" /></div>
-                    <div class="form-group"><label style="display:block;margin-bottom:0.3rem;color:#aaa;font-size:0.9rem;">PIN Code *</label><input type="text" id="coPincode" class="filter-input" style="width:100%;" required /></div>
+                    <div class="form-group"><label style="display:block;margin-bottom:0.3rem;font-size:0.9rem;" class="form-label-styled">City *</label><input type="text" id="coCity" value="Surat" class="filter-input" style="width:100%;" required /></div>
+                    <div class="form-group"><label style="display:block;margin-bottom:0.3rem;font-size:0.9rem;" class="form-label-styled">State</label><input type="text" id="coState" value="Gujarat" class="filter-input" style="width:100%;" /></div>
+                    <div class="form-group"><label style="display:block;margin-bottom:0.3rem;font-size:0.9rem;" class="form-label-styled">PIN Code *</label><input type="text" id="coPincode" class="filter-input" style="width:100%;" required /></div>
                 </div>
-                <div class="form-group"><label style="display:block;margin-bottom:0.3rem;color:#aaa;font-size:0.9rem;">Order Notes (optional)</label><textarea id="coNotes" rows="2" class="filter-input" style="width:100%;resize:none;" placeholder="Any special instructions..."></textarea></div>
+                <div class="form-group"><label style="display:block;margin-bottom:0.3rem;font-size:0.9rem;" class="form-label-styled">Order Notes (optional)</label><textarea id="coNotes" rows="2" class="filter-input" style="width:100%;resize:none;" placeholder="Any special instructions..."></textarea></div>
 
                 <h3 style="margin-top:1rem;"><i class="fas fa-credit-card" style="color:var(--solar-gold);"></i> Payment Method</h3>
                 <div style="display:flex;gap:1rem;flex-wrap:wrap;">
@@ -95,8 +95,8 @@
             <h3 style="margin-bottom:1.5rem;">Order Summary</h3>
             <div id="checkoutItems" style="display:flex;flex-direction:column;gap:1rem;margin-bottom:1.5rem;"></div>
             <div style="border-top:1px solid rgba(255,255,255,0.05);padding-top:1.5rem;">
-                <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;"><span style="color:#aaa;">Subtotal</span><span id="coSubtotal" style="font-weight:600;">₹0</span></div>
-                <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;"><span style="color:#aaa;">Shipping</span><span style="font-weight:600;color:#28a745;">Free</span></div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;"><span  class="form-label-styled">Subtotal</span><span id="coSubtotal" style="font-weight:600;">₹0</span></div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;"><span  class="form-label-styled">Shipping</span><span style="font-weight:600;color:#28a745;">Free</span></div>
                 <div style="display:flex;justify-content:space-between;margin-top:1rem;border-top:1px solid rgba(255,255,255,0.05);padding-top:1rem;"><strong style="font-size:1.1rem;">Total</strong><strong id="coTotal" style="font-size:1.4rem;color:var(--solar-gold);">₹0</strong></div>
             </div>
         </div>
@@ -125,7 +125,7 @@ function renderCheckoutSummary() {
         const price = item.discounted_price || item.price;
         const total = price * item.quantity;
         subtotal += total;
-        container.innerHTML += `<div style="display:flex;justify-content:space-between;align-items:center;"><div><strong>${item.name}</strong><br><span style="font-size:0.85rem;color:#888;">Qty: ${item.quantity} × ₹${price.toLocaleString('en-IN')}</span></div><span style="font-weight:600;">₹${total.toLocaleString('en-IN')}</span></div>`;
+        container.innerHTML += `<div style="display:flex;justify-content:space-between;align-items:center;"><div><strong>${item.name}</strong><br><span style="font-size:0.85rem;" class="text-sub-styled">Qty: ${item.quantity} × ₹${price.toLocaleString('en-IN')}</span></div><span style="font-weight:600;">₹${total.toLocaleString('en-IN')}</span></div>`;
     });
     document.getElementById('coSubtotal').textContent = `₹${subtotal.toLocaleString('en-IN')}`;
     document.getElementById('coTotal').textContent = `₹${subtotal.toLocaleString('en-IN')}`;
