@@ -2,7 +2,7 @@ from .base import *
 
 DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1,.onrender.com,.render.com,.mahisolar.in').split(',')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1,.onrender.com,.render.com,.mahisolar.in,.mahisolar.co.in,mahisolar.co.in,www.mahisolar.co.in').split(',')
 
 SECURE_SSL_REDIRECT = os.getenv('SECURE_SSL_REDIRECT', 'True').lower() == 'true'
 SESSION_COOKIE_SECURE = os.getenv('SESSION_COOKIE_SECURE', 'True').lower() == 'true'
@@ -18,7 +18,7 @@ if 'DATABASE_URL' in os.environ and os.environ['DATABASE_URL']:
     import dj_database_url
     DATABASES['default'] = dj_database_url.parse(os.environ['DATABASE_URL'], conn_max_age=600)
 
-csrf_origins = os.getenv('CSRF_TRUSTED_ORIGINS', 'https://mahisolar.in,https://www.mahisolar.in,https://*.onrender.com')
+csrf_origins = os.getenv('CSRF_TRUSTED_ORIGINS', 'https://mahisolar.in,https://www.mahisolar.in,https://mahisolar.co.in,https://www.mahisolar.co.in,https://*.onrender.com,https://*.workers.dev')
 CSRF_TRUSTED_ORIGINS = [origin.strip() for origin in csrf_origins.split(',') if origin.strip()]
 
 cors_origins = os.getenv('CORS_ALLOWED_ORIGINS', '')
