@@ -126,3 +126,78 @@ def profile_view(request):
         return JsonResponse({'success': True, 'message': 'Profile updated'})
 
     return JsonResponse({'success': False, 'error': 'Method not allowed'})
+
+
+@api_login_required
+def users_list_view(request):
+    if not (request.user.is_staff or request.user.is_superuser):
+        return JsonResponse({'success': False, 'error': 'Permission denied. Admin privileges required.'}, status=403)
+
+    from django.contrib.auth.models import User
+    users = User.objects.all().order_by('-date_joined')
+    user_data = []
+    for u in users:
+        phone = ''
+        if hasattr(u, 'profile') and u.profile:
+            phone = u.profile.phone or ''
+        user_data.append({
+            'id': u.id,
+            'username': u.username,
+            'email': u.email,
+            'first_name': u.first_name,
+            'last_name': u.last_name,
+            'phone': phone,
+            'is_staff': u.is_staff,
+            'is_superuser': u.is_superuser,
+            'date_joined': u.date_joined.strftime('%d %b %Y, %H:%M') if u.date_joined else '',
+        })
+    return JsonResponse({'success': True, 'users': user_data})
+
+
+@csrf_exempt
+@api_login_required
+def toggle_admin_view(request):
+    if not (request.user.is_staff or request.user.is_superuser):
+        return JsonResponse({'success': False, 'error': 'Permission denied. Only Superusers can assign admin rights.'}, status=403)
+
+    if request.method != 'POST':
+        return JsonResponse({'success': False, 'error': 'Only POST method allowed'}, status=405)
+
+    try:
+        data = json.loads(request.body)
+    except Exception:
+        data = request.POST
+
+    from django.contrib.auth.models import User
+    user_identifier = data.get('user_id') or data.get('username') or data.get('email')
+    action = data.get('action', 'promote') # 'promote' or 'demote'
+
+    if not user_identifier:
+        return JsonResponse({'success': False, 'error': 'User ID, Username, or Email required.'}, status=400)
+
+    user = None
+    if str(user_identifier).isdigit():
+        user = User.objects.filter(id=int(user_identifier)).first()
+    if not user:
+        user = User.objects.filter(username=user_identifier).first()
+    if not user:
+        user = User.objects.filter(email=user_identifier).first()
+
+    if not user:
+        return JsonResponse({'success': False, 'error': f'User "{user_identifier}" not found.'}, status=404)
+
+    if action == 'promote':
+        user.is_staff = True
+        user.is_superuser = True
+        user.save()
+        return JsonResponse({'success': True, 'message': f'User "{user.username}" ({user.email}) has been granted FULL ADMIN PARTNER privileges!'})
+    elif action == 'demote':
+        if user == request.user:
+            return JsonResponse({'success': False, 'error': 'You cannot demote your own active admin account!'}, status=400)
+        user.is_staff = False
+        user.is_superuser = False
+        user.save()
+        return JsonResponse({'success': True, 'message': f'Admin privileges revoked for user "{user.username}".'})
+    else:
+        return JsonResponse({'success': False, 'error': 'Invalid action. Use "promote" or "demote".'}, status=400)
+
