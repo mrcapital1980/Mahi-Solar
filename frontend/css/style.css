@@ -1168,4 +1168,192 @@ main { padding-top: var(--navbar-height); }
   .calc-info-cards { grid-template-columns: 1fr; }
 }
 
+/* ===================================================
+   MAHI SOLAR — HIGH CONTRAST & LIGHT THEME POLISH
+   =================================================== */
+
+/* Text Legibility & Contrast Global Adjustments */
+body {
+  color: var(--text-primary);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+p, li, td {
+  color: var(--text-secondary);
+}
+
+.text-muted, small, .result-label, .blog-meta span {
+  color: var(--text-muted);
+}
+
+/* 3D Intro & Overlay Text Shadow for WebGL Visibility */
+.hero-title, .hero-subtitle, .intro-heading {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+/* Light Theme Executive Overrides */
+[data-theme="light"] {
+  background-color: var(--bg-primary);
+  color: #0F172A;
+}
+
+[data-theme="light"] body {
+  background-color: var(--bg-primary);
+  color: #0F172A;
+}
+
+[data-theme="light"] .hero {
+  background: radial-gradient(circle at center top, #F1F5F9 0%, #F8FAFC 80%);
+}
+
+[data-theme="light"] .card,
+[data-theme="light"] .product-card,
+[data-theme="light"] .blog-card,
+[data-theme="light"] .info-card,
+[data-theme="light"] .calc-form-card,
+[data-theme="light"] .calc-results,
+[data-theme="light"] .stats-card,
+[data-theme="light"] .sidebar-card,
+[data-theme="light"] .sidebar-cta,
+[data-theme="light"] .profile-sidebar,
+[data-theme="light"] .profile-content,
+[data-theme="light"] .cart-summary,
+[data-theme="light"] .checkout-summary,
+[data-theme="light"] .order-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06), 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .product-card:hover,
+[data-theme="light"] .blog-card:hover,
+[data-theme="light"] .stats-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 35px rgba(212, 175, 55, 0.2), 0 4px 12px rgba(15, 23, 42, 0.08) !important;
+}
+
+[data-theme="light"] h1, 
+[data-theme="light"] h2, 
+[data-theme="light"] h3, 
+[data-theme="light"] h4, 
+[data-theme="light"] h5, 
+[data-theme="light"] h6 {
+  color: #0F172A !important;
+  text-shadow: none !important;
+}
+
+[data-theme="light"] p, 
+[data-theme="light"] li, 
+[data-theme="light"] span:not(.btn):not(.tag):not(.badge) {
+  color: #334155;
+}
+
+[data-theme="light"] .text-muted, 
+[data-theme="light"] small, 
+[data-theme="light"] .result-label, 
+[data-theme="light"] .blog-meta span {
+  color: #64748B !important;
+}
+
+/* Light Mode Inputs & Form Controls */
+[data-theme="light"] input,
+[data-theme="light"] select,
+[data-theme="light"] textarea,
+[data-theme="light"] .calc-input {
+  background: #FFFFFF !important;
+  border: 1.5px solid #CBD5E1 !important;
+  color: #0F172A !important;
+  font-weight: 500;
+}
+
+[data-theme="light"] input::placeholder,
+[data-theme="light"] textarea::placeholder {
+  color: #94A3B8 !important;
+}
+
+[data-theme="light"] input:focus,
+[data-theme="light"] select:focus,
+[data-theme="light"] textarea:focus,
+[data-theme="light"] .calc-input:focus {
+  border-color: #B59226 !important;
+  box-shadow: 0 0 0 3px rgba(181, 146, 38, 0.15) !important;
+  outline: none;
+}
+
+/* Light Mode Admin & Data Tables */
+[data-theme="light"] table {
+  background: #FFFFFF !important;
+  color: #0F172A !important;
+}
+
+[data-theme="light"] th {
+  background: #F1F5F9 !important;
+  color: #0F172A !important;
+  border-bottom: 2px solid #E2E8F0 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="light"] td {
+  border-bottom: 1px solid #E2E8F0 !important;
+  color: #334155 !important;
+}
+
+[data-theme="light"] tr:hover td {
+  background: #F8FAFC !important;
+}
+
+/* Navbar & Glass Container Polish in Light Mode */
+[data-theme="light"] .navbar-container,
+[data-theme="light"] .dropdown-menu {
+  background: rgba(255, 255, 255, 0.94) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08) !important;
+}
+
+[data-theme="light"] .nav-link {
+  color: #334155 !important;
+}
+
+[data-theme="light"] .nav-link:hover {
+  color: #0F172A !important;
+}
+
+[data-theme="light"] .nav-link.active {
+  color: #B59226 !important;
+}
+
+[data-theme="light"] .btn-icon {
+  border-color: #CBD5E1;
+  color: #0F172A;
+}
+
+[data-theme="light"] .user-btn {
+  border-color: #CBD5E1;
+  color: #0F172A;
+}
+
+/* Footer Legibility Polish */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 4rem 2rem 2rem;
+  background: var(--bg-secondary);
+}
+
+.footer a {
+  color: var(--text-secondary);
+  transition: var(--transition-snappy);
+}
+
+.footer a:hover {
+  color: var(--solar-gold);
+}
+
+
 
