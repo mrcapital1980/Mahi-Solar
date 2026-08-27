@@ -2,23 +2,19 @@
  * MAHI SOLAR — PREMIUM GLASSMORPHISM NAVBAR
  */
 
-header {
-    position: fixed;
-    top: 1.25rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 92%;
-    max-width: var(--container-max, 1280px);
-    z-index: 1000;
-    transition: var(--transition-smooth);
-    opacity: 1;
-}
-
-/* Slide in & reveal once 3D Intro completes or for Subpages */
+header,
 header.visible,
 header.subpage-header {
-    transform: translateX(-50%) translateY(0);
-    opacity: 1;
+    position: fixed !important;
+    top: 1.25rem !important;
+    left: 50% !important;
+    transform: translateX(-50%) translateY(0) !important;
+    width: 92% !important;
+    max-width: 1400px !important;
+    z-index: 1000 !important;
+    transition: var(--transition-smooth);
+    opacity: 1 !important;
+    margin: 0 !important;
 }
 
 .navbar-container {
