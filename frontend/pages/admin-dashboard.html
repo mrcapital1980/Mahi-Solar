@@ -425,13 +425,21 @@
 <!-- MAIN CONTENT -->
 <main style="padding-top: 80px; min-height: 80vh;">
   <div class="dash-container">
-    <div style="margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center;">
-      <h1 style="font-family: var(--font-primary); font-size: 2.5rem; font-weight: 800;">
-        Admin <span class="text-green">Dashboard</span>
-      </h1>
-      <span style="font-size: 0.9rem; background: var(--green-pale); color: var(--green-primary); font-weight: 700; padding: 0.5rem 1rem; border-radius: 50px;">
-        <i class="fas fa-shield-alt"></i> Superuser Portal
-      </span>
+    <div style="margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <h1 style="font-family: var(--font-primary); font-size: 2.2rem; font-weight: 800; margin-bottom: 0.3rem;">
+          Executive <span class="text-green">Admin Portal</span>
+        </h1>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Real-time monitoring of customer orders, site visits & leads</p>
+      </div>
+      <div style="display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap;">
+        <button class="btn-quote" style="padding: 0.6rem 1.2rem; font-size: 0.88rem; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;" onclick="loadAllDashboardData()">
+          <i class="fas fa-sync-alt" id="syncSpinner"></i> Sync Live Data
+        </button>
+        <span style="font-size: 0.85rem; background: var(--green-pale); color: var(--green-primary); font-weight: 700; padding: 0.6rem 1.1rem; border-radius: 50px; display: inline-flex; align-items: center; gap: 6px;">
+          <i class="fas fa-shield-alt"></i> Verified Superuser
+        </span>
+      </div>
     </div>
 
     <!-- STATS COUNTER GRID -->
@@ -784,18 +792,32 @@
   let cachedVisits = [];
   let cachedCalculator = [];
 
-  // Init Loading
+  // Init Loading & Live 15s Auto-Sync
+  let isSyncing = false;
   if (verifyAdminAccess()) {
     document.addEventListener('DOMContentLoaded', () => {
       loadAllDashboardData();
+      setInterval(() => {
+        loadAllDashboardData(true);
+      }, 15000);
     });
   }
 
-  function loadAllDashboardData() {
-    loadOrders();
-    loadContacts();
-    loadVisits();
-    loadCalculatorLeads();
+  function loadAllDashboardData(silent = false) {
+    if (isSyncing) return;
+    isSyncing = true;
+    const spinner = document.getElementById('syncSpinner');
+    if (spinner && !silent) spinner.classList.add('fa-spin');
+
+    Promise.all([
+      loadOrders(),
+      loadContacts(),
+      loadVisits(),
+      loadCalculatorLeads()
+    ]).finally(() => {
+      isSyncing = false;
+      if (spinner) spinner.classList.remove('fa-spin');
+    });
   }
 
   // Tab switcher

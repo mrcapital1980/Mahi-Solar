@@ -69,26 +69,42 @@ class CartViewSet(viewsets.ViewSet):
 
 class OrderViewSet(viewsets.ViewSet):
     authentication_classes = [TokenAuthentication, SessionAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def list(self, request):
-        orders = Order.objects.filter(user=request.user)
+        if request.user.is_authenticated and (request.user.is_staff or request.user.is_superuser):
+            orders = Order.objects.all().order_by('-created_at')
+        elif request.user.is_authenticated:
+            orders = Order.objects.filter(user=request.user).order_by('-created_at')
+        else:
+            orders = Order.objects.none()
         serializer = OrderSerializer(orders, many=True)
         return Response({'success': True, 'orders': serializer.data})
 
     def retrieve(self, request, pk=None):
-        order = get_object_or_404(Order, order_id=pk, user=request.user)
+        if request.user.is_authenticated and (request.user.is_staff or request.user.is_superuser):
+            order = get_object_or_404(Order, order_id=pk)
+        elif request.user.is_authenticated:
+            order = get_object_or_404(Order, order_id=pk, user=request.user)
+        else:
+            return Response({'success': False, 'error': 'Authentication required'}, status=401)
         serializer = OrderSerializer(order)
         return Response({'success': True, 'order': serializer.data})
 
     def create(self, request):
-        cart = get_object_or_404(Cart, user=request.user, is_checked_out=False)
-        if not cart.items.exists():
-            return Response({'success': False, 'error': 'Cart is empty'}, status=400)
-
         data = request.data
+        items_payload = data.get('items', [])
+        
+        user = request.user if request.user.is_authenticated else None
+        cart = None
+        if user:
+            cart = Cart.objects.filter(user=user, is_checked_out=False).first()
+        
+        # Create order even if no DB cart exists (guest or local storage checkout)
+        total_amount = float(data.get('total_amount', 0))
+        
         order = Order.objects.create(
-            user=request.user,
+            user=user,
             cart=cart,
             full_name=data.get('full_name', ''),
             email=data.get('email', ''),
@@ -98,19 +114,43 @@ class OrderViewSet(viewsets.ViewSet):
             state=data.get('state', 'Gujarat'),
             pincode=data.get('pincode', ''),
             payment_method=data.get('payment_method', 'cod'),
-            total_amount=cart.total,
+            total_amount=total_amount,
             notes=data.get('notes', ''),
         )
-        for item in cart.items.all():
-            OrderItem.objects.create(
-                order=order,
-                product=item.product,
-                product_name=item.product.name,
-                price=item.product.effective_price,
-                quantity=item.quantity,
-            )
-        cart.is_checked_out = True
-        cart.save()
+        
+        # Populate OrderItems from DB cart or from payload items
+        if cart and cart.items.exists():
+            for item in cart.items.all():
+                OrderItem.objects.create(
+                    order=order,
+                    product=item.product,
+                    product_name=item.product.name,
+                    price=item.product.effective_price,
+                    quantity=item.quantity,
+                )
+            cart.is_checked_out = True
+            cart.save()
+        elif items_payload:
+            from products.models import Product
+            calc_total = 0
+            for item_data in items_payload:
+                prod_id = item_data.get('id') or item_data.get('product_id')
+                product = Product.objects.filter(id=prod_id).first() if prod_id else None
+                p_name = item_data.get('name') or (product.name if product else 'Solar Product')
+                p_price = float(item_data.get('discounted_price') or item_data.get('price') or (product.effective_price if product else 0))
+                p_qty = int(item_data.get('quantity', 1))
+                calc_total += p_price * p_qty
+                
+                OrderItem.objects.create(
+                    order=order,
+                    product=product,
+                    product_name=p_name,
+                    price=p_price,
+                    quantity=p_qty,
+                )
+            if total_amount == 0:
+                order.total_amount = calc_total
+                order.save()
 
         payment_method = data.get('payment_method', 'cod')
         if payment_method == 'cod':
