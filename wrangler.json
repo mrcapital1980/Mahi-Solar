@@ -1,7 +1,7 @@
 {
-  "name": "mahi-solar",
+  "name": "mahi-solar-frontend",
   "compatibility_date": "2026-08-26",
   "assets": {
-    "directory": "frontend/pages"
+    "directory": "frontend"
   }
 }
