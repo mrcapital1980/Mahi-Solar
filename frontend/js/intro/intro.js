@@ -29,34 +29,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Track stages based on overall progress (0.0 to 1.0)
                 
+                // Keep header permanently visible and fixed at top across all stages
+                if (header) {
+                    header.classList.add('visible');
+                    header.classList.add('subpage-header');
+                }
+
                 // Stage 1 active (0% - 20%)
                 if (progress < 0.20) {
                     toggleActiveContent(content1);
-                    header.classList.remove('visible');
                 }
-                
                 // Stage 2 active (20% - 45%)
                 else if (progress >= 0.20 && progress < 0.45) {
                     toggleActiveContent(content2);
-                    header.classList.remove('visible');
                 }
-                
                 // Stage 3 active (45% - 70%)
                 else if (progress >= 0.45 && progress < 0.70) {
                     toggleActiveContent(content3);
-                    header.classList.remove('visible');
                 }
-                
                 // Stage 4 active (70% - 88%)
                 else if (progress >= 0.70 && progress < 0.88) {
                     toggleActiveContent(content4);
-                    header.classList.remove('visible');
                 }
-                
-                // Stage 5 active (88% - 100%) - Hero reveal & Header entry
+                // Stage 5 active (88% - 100%) - Hero reveal
                 else if (progress >= 0.88) {
                     clearAllActive();
-                    header.classList.add('visible'); // Smooth slide down of glass navbar
                 }
             }
         }
