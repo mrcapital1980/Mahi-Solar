@@ -157,6 +157,12 @@
 
     /* Glassmorphic Panel Table */
     .panel-card {
+      position: relative !important;
+      bottom: auto !important;
+      right: auto !important;
+      top: auto !important;
+      left: auto !important;
+      width: 100% !important;
       background: var(--dash-card-bg);
       border: 1px solid var(--dash-card-border);
       border-radius: 18px;
@@ -164,6 +170,8 @@
       box-shadow: var(--dash-shadow);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
+      margin-top: 1.5rem;
+      transition: all 0.3s ease;
     }
 
     .panel-header {
@@ -496,7 +504,12 @@
     <div id="orders-tab" class="tab-pane active">
       <div class="panel-card">
         <div class="panel-header">
-          <h2>Order Manager</h2>
+          <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+            <h2 style="margin: 0;">Order Manager</h2>
+            <button class="tab-btn" style="padding: 0.35rem 0.85rem; font-size: 0.8rem; border: 1px solid var(--border); background: var(--bg-primary);" onclick="toggleTableCollapse('ordersTableContainer', this)">
+              <i class="fas fa-minus-circle"></i> Minimize
+            </button>
+          </div>
           <div class="search-filter-box">
             <input type="text" id="orderSearch" class="search-input" placeholder="Search by customer name..." onkeyup="filterOrders()" />
             <select id="orderStatusFilter" class="search-input" style="min-width: 150px;" onchange="filterOrders()">
@@ -511,7 +524,7 @@
           </div>
         </div>
 
-        <div class="table-container">
+        <div class="table-container" id="ordersTableContainer">
           <table id="ordersTable">
             <thead>
               <tr>
@@ -1235,6 +1248,18 @@
       return (lead.name || '').toLowerCase().includes(q) || (lead.email || '').toLowerCase().includes(q);
     });
     renderCalculator(filtered);
+  }
+
+  function toggleTableCollapse(containerId, btn) {
+    const el = document.getElementById(containerId);
+    if (!el) return;
+    if (el.style.display === 'none') {
+      el.style.display = 'block';
+      btn.innerHTML = '<i class="fas fa-minus-circle"></i> Minimize';
+    } else {
+      el.style.display = 'none';
+      btn.innerHTML = '<i class="fas fa-expand-alt"></i> Open Table';
+    }
   }
 
   // Click outside to close modal
