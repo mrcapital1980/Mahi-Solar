@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard — Mahi Solar</title>
+  <link rel="icon" href="../assets/images/logo-pic.png" type="image/png">
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/navbar.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* Premium Dashboard Styles */
+    :root {
+      --dash-card-bg: rgba(255, 255, 255, 0.9);
+      --dash-card-border: rgba(0, 0, 0, 0.06);
+      --dash-table-header: #f4f6f4;
+      --dash-text-dark: #111;
+      --dash-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+    
+    html[data-theme="dark"] {
+      --dash-card-bg: rgba(18, 24, 38, 0.6);
+      --dash-card-border: rgba(255, 255, 255, 0.08);
+      --dash-table-header: rgba(255, 255, 255, 0.02);
+      --dash-text-dark: #fff;
+      --dash-shadow: 0 15px 45px rgba(0, 0, 0, 0.5);
+    }
+
+    .dash-container {
+      max-width: 1200px;
+      margin: 2rem auto 4rem;
+      padding: 0 20px;
+    }
+
+    /* Stats Strip */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .stats-card {
+      background: var(--dash-card-bg);
+      border: 1px solid var(--dash-card-border);
+      border-radius: 16px;
+      padding: 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: var(--dash-shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .stats-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .stats-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: var(--green-pale);
+      color: var(--green-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    
+    html[data-theme="dark"] .stats-icon {
+      background: rgba(255, 179, 0, 0.1);
+      color: #ffb300;
+    }
+
+    .stats-info h3 {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.2rem;
+    }
+
+    .stats-info strong {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--dash-text-dark);
+    }
+
+    /* Tab Controls */
+    .dash-tabs {
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--dash-card-border);
+      margin-bottom: 2rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      padding: 0.8rem 1.5rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      border-radius: 8px;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover {
+      color: var(--green-primary);
+      background: var(--green-pale);
+    }
+    
+    html[data-theme="dark"] .tab-btn:hover {
+      color: #ffb300;
+      background: rgba(255, 179, 0, 0.1);
+    }
+
+    .tab-btn.active {
+      color: #fff;
+      background: var(--green-primary);
+    }
+    
+    html[data-theme="dark"] .tab-btn.active {
+      color: #000;
+      background: #ffb300;
+      box-shadow: 0 4px 15px rgba(255, 179, 0, 0.3);
+    }
+
+    /* Tab Contents */
+    .tab-pane {
+      display: none;
+    }
+
+    .tab-pane.active {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Glassmorphic Panel Table */
+    .panel-card {
+      background: var(--dash-card-bg);
+      border: 1px solid var(--dash-card-border);
+      border-radius: 18px;
+      padding: 2rem;
+      box-shadow: var(--dash-shadow);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .panel-header h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .search-filter-box {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .search-input {
+      padding: 0.6rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-size: 0.88rem;
+      min-width: 220px;
+    }
+
+    .table-container {
+      overflow-x: auto;
+      margin-top: 1rem;
+      border-radius: 12px;
+      border: 1px solid var(--dash-card-border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    th {
+      background: var(--dash-table-header);
+      padding: 1rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      border-bottom: 2px solid var(--dash-card-border);
+    }
+
+    td {
+      padding: 1.2rem 1rem;
+      border-bottom: 1px solid var(--dash-card-border);
+      vertical-align: middle;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: rgba(46, 125, 50, 0.02);
+    }
+    
+    html[data-theme="dark"] tr:hover td {
+      background: rgba(255, 179, 0, 0.02);
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.6rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .badge-pending { background: #ffeeb3; color: #856404; }
+    .badge-confirmed { background: #d4edda; color: #155724; }
+    .badge-processing { background: #cce5ff; color: #004085; }
+    .badge-shipped { background: #e2e3e5; color: #383d41; }
+    .badge-delivered { background: #c3e6cb; color: #1e7e34; }
+    .badge-cancelled { background: #f8d7da; color: #721c24; }
+
+    html[data-theme="dark"] .badge-pending { background: rgba(255, 193, 7, 0.15); color: #ffc107; }
+    html[data-theme="dark"] .badge-confirmed { background: rgba(40, 167, 69, 0.15); color: #28a745; }
+    html[data-theme="dark"] .badge-processing { background: rgba(0, 123, 255, 0.15); color: #007bff; }
+    html[data-theme="dark"] .badge-shipped { background: rgba(108, 117, 125, 0.15); color: #6c757d; }
+    html[data-theme="dark"] .badge-delivered { background: rgba(40, 167, 69, 0.2); color: #2e7d32; }
+    html[data-theme="dark"] .badge-cancelled { background: rgba(220, 53, 69, 0.15); color: #dc3545; }
+
+    /* Action Buttons */
+    .act-btn {
+      background: none;
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .act-btn:hover {
+      background: var(--green-pale);
+      border-color: var(--green-primary);
+      color: var(--green-primary);
+    }
+    
+    html[data-theme="dark"] .act-btn:hover {
+      background: rgba(255, 179, 0, 0.1);
+      border-color: #ffb300;
+      color: #ffb300;
+    }
+
+    .act-btn-danger {
+      color: #dc3545;
+      border-color: rgba(220, 53, 69, 0.2);
+    }
+
+    .act-btn-danger:hover {
+      background: rgba(220, 53, 69, 0.05);
+      border-color: #dc3545;
+      color: #dc3545;
+    }
+
+    /* Modal Overlay & Card Details */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeInOverlay 0.3s ease;
+    }
+
+    @keyframes fadeInOverlay {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-card {
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      width: 90%;
+      max-width: 680px;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: var(--dash-shadow);
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: var(--text-secondary);
+    }
+    
+    .modal-close:hover {
+      color: var(--green-primary);
+    }
+
+    /* Quick status transitions select */
+    .status-select {
+      padding: 0.4rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .status-select:focus {
+      outline: none;
+      border-color: var(--green-primary);
+    }
+
+    /* Empty state info */
+    .empty-state {
+      text-align: center;
+      padding: 3.5rem;
+      color: var(--text-muted);
+    }
+
+    .empty-state i {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- UNIFIED FLOATING HEADER -->
+<header class="visible subpage-header">
+    <div class="navbar-container">
+        <div class="logo">
+            <a href="index.html">
+                <div class="logo-icon"><img src="../assets/images/logo-pic.png" alt="Mahi Solar"></div>
+                <div class="logo-text">MAHI <span>SOLAR</span></div>
+            </a>
+        </div>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="products.html" class="nav-link">Products</a></li>
+            <li><a href="calculator.html" class="nav-link">Solar Estimator</a></li>
+            <li><a href="blog.html" class="nav-link">Blog</a></li>
+            <li><a href="site-visit.html" class="nav-link">Book Site Visit</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="btn-icon" id="themeToggle" title="Toggle Theme"><i class="fas fa-sun"></i></button>
+            <a href="cart.html" class="btn-icon" title="View Cart">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-badge" id="cartBadgeCount">0</span>
+            </a>
+            <div id="authLinks" class="auth-links">
+                <a href="login.html" class="nav-link">Login</a>
+                <a href="calculator.html" class="btn-quote">Get Quote</a>
+            </div>
+            <div id="userDropdown" class="user-dropdown" style="display:none;">
+                <button class="user-btn"><i class="fas fa-user-circle"></i> <span id="userNameField">Profile</span> <i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-menu">
+                    <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                    <a href="orders.html"><i class="fas fa-box"></i> My Orders</a>
+                    <a href="#" onclick="handleLogout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </div>
+        </div>
+        <button class="mobile-toggle" id="hamburger" aria-label="Toggle Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main style="padding-top: 80px; min-height: 80vh;">
+  <div class="dash-container">
+    <div style="margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center;">
+      <h1 style="font-family: var(--font-primary); font-size: 2.5rem; font-weight: 800;">
+        Admin <span class="text-green">Dashboard</span>
+      </h1>
+      <span style="font-size: 0.9rem; background: var(--green-pale); color: var(--green-primary); font-weight: 700; padding: 0.5rem 1rem; border-radius: 50px;">
+        <i class="fas fa-shield-alt"></i> Superuser Portal
+      </span>
+    </div>
+
+    <!-- STATS COUNTER GRID -->
+    <div class="stats-grid">
+      <div class="stats-card">
+        <div class="stats-icon"><i class="fas fa-box"></i></div>
+        <div class="stats-info">
+          <h3>Total Orders</h3>
+          <strong id="statTotalOrders">0</strong>
+        </div>
+      </div>
+      <div class="stats-card">
+        <div class="stats-icon"><i class="fas fa-indian-rupee-sign"></i></div>
+        <div class="stats-info">
+          <h3>Total Sales</h3>
+          <strong id="statTotalSales">₹0</strong>
+        </div>
+      </div>
+      <div class="stats-card">
+        <div class="stats-icon"><i class="fas fa-comments"></i></div>
+        <div class="stats-info">
+          <h3>Customer Queries</h3>
+          <strong id="statTotalQueries">0</strong>
+        </div>
+      </div>
+      <div class="stats-card">
+        <div class="stats-icon"><i class="fas fa-calendar-check"></i></div>
+        <div class="stats-info">
+          <h3>Site Visits</h3>
+          <strong id="statTotalVisits">0</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB NAVIGATION -->
+    <div class="dash-tabs">
+      <button class="tab-btn active" onclick="switchTab('orders-tab', this)">
+        <i class="fas fa-shopping-bag"></i> Orders
+      </button>
+      <button class="tab-btn" onclick="switchTab('contacts-tab', this)">
+        <i class="fas fa-envelope-open-text"></i> Contact Queries
+      </button>
+      <button class="tab-btn" onclick="switchTab('visits-tab', this)">
+        <i class="fas fa-calendar-alt"></i> Site Visits
+      </button>
+      <button class="tab-btn" onclick="switchTab('calculator-tab', this)">
+        <i class="fas fa-calculator"></i> Calculator Leads
+      </button>
+    </div>
+
+    <!-- TAB PANES -->
+    
+    <!-- 1. ORDERS TAB -->
+    <div id="orders-tab" class="tab-pane active">
+      <div class="panel-card">
+        <div class="panel-header">
+          <h2>Order Manager</h2>
+          <div class="search-filter-box">
+            <input type="text" id="orderSearch" class="search-input" placeholder="Search by customer name..." onkeyup="filterOrders()" />
+            <select id="orderStatusFilter" class="search-input" style="min-width: 150px;" onchange="filterOrders()">
+              <option value="all">All Statuses</option>
+              <option value="pending">Pending</option>
+              <option value="confirmed">Confirmed</option>
+              <option value="processing">Processing</option>
+              <option value="shipped">Shipped</option>
+              <option value="delivered">Delivered</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table id="ordersTable">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Customer Name</th>
+                <th>Date</th>
+                <th>Total Value</th>
+                <th>Method</th>
+                <th>Status</th>
+                <th style="text-align: center;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="ordersTableBody">
+              <tr>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 80px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 120px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 100px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 90px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 60px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-badge" style="width: 80px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-button" style="width: 70px; height: 28px; margin: 0 auto;"></div></td>
+              </tr>
+              <tr>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 80px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 120px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 100px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 90px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 60px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-badge" style="width: 80px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-button" style="width: 70px; height: 28px; margin: 0 auto;"></div></td>
+              </tr>
+              <tr>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 80px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 120px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 100px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 90px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 60px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-badge" style="width: 80px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-button" style="width: 70px; height: 28px; margin: 0 auto;"></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. CONTACT QUERIES TAB -->
+    <div id="contacts-tab" class="tab-pane">
+      <div class="panel-card">
+        <div class="panel-header">
+          <h2>Customer Inquiries</h2>
+          <div class="search-filter-box">
+            <input type="text" id="contactSearch" class="search-input" placeholder="Search by name or subject..." onkeyup="filterContacts()" />
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table id="contactsTable">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Subject</th>
+                <th>Message</th>
+                <th>Status</th>
+                <th style="text-align: center;">Mark Resolved</th>
+              </tr>
+            </thead>
+            <tbody id="contactsTableBody">
+              <tr>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 100px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 130px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 100px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 120px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 180px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-badge" style="width: 85px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-button" style="width: 75px; height: 28px; margin: 0 auto;"></div></td>
+              </tr>
+              <tr>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 100px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 130px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 100px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 120px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 180px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-badge" style="width: 85px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-button" style="width: 75px; height: 28px; margin: 0 auto;"></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. SITE VISITS TAB -->
+    <div id="visits-tab" class="tab-pane">
+      <div class="panel-card">
+        <div class="panel-header">
+          <h2>Site Visit Bookings</h2>
+          <div class="search-filter-box">
+            <input type="text" id="visitSearch" class="search-input" placeholder="Search by name or city..." onkeyup="filterVisits()" />
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table id="visitsTable">
+            <thead>
+              <tr>
+                <th>Customer</th>
+                <th>Contact Info</th>
+                <th>Preferred Details</th>
+                <th>Notes</th>
+                <th>City & Address</th>
+                <th>Status</th>
+                <th style="text-align: center;">Confirm Appointment</th>
+              </tr>
+            </thead>
+            <tbody id="visitsTableBody">
+              <tr>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 110px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 120px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 140px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 130px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 160px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-badge" style="width: 90px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-button" style="width: 80px; height: 28px; margin: 0 auto;"></div></td>
+              </tr>
+              <tr>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 110px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 120px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 140px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 130px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 160px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-badge" style="width: 90px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-button" style="width: 80px; height: 28px; margin: 0 auto;"></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. CALCULATOR LEADS TAB -->
+    <div id="calculator-tab" class="tab-pane">
+      <div class="panel-card">
+        <div class="panel-header">
+          <h2>Solar Calculator Submissions</h2>
+          <div class="search-filter-box">
+            <input type="text" id="calcSearch" class="search-input" placeholder="Search by name..." onkeyup="filterCalculator()" />
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table id="calculatorTable">
+            <thead>
+              <tr>
+                <th>Submitter</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Monthly Bill</th>
+                <th>Sizing Info</th>
+                <th>Roof Area</th>
+                <th>Est. Cost</th>
+                <th>Submitted At</th>
+              </tr>
+            </thead>
+            <tbody id="calculatorTableBody">
+              <tr>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 120px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 90px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 130px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 80px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 100px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 80px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 90px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 110px;"></div></td>
+              </tr>
+              <tr>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 120px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 90px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 130px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 80px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 100px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 80px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 90px;"></div></td>
+                <td><div class="skeleton-shimmer skeleton-table-cell" style="width: 110px;"></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ORDER DETAIL MODAL -->
+  <div id="adminOrderDetailModal" class="modal-overlay" style="display: none;">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeAdminDetailModal()">&times;</button>
+      <h3 style="font-family: var(--font-primary); font-size: 1.8rem; font-weight: 800; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.8rem;">
+        Order Details
+      </h3>
+      <div id="adminModalOrderInfo" style="display: flex; flex-direction: column; gap: 1rem;">
+        <!-- Loaded dynamically -->
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-col">
+      <div class="footer-logo">
+        <img src="../assets/images/logo.png" alt="Mahi Solar Logo" class="footer-logo-icon">
+        <span>Mahi Solar</span>
+      </div>
+      <p>Leading solar energy provider in Surat, Gujarat. Empowering homes and businesses with clean, affordable solar solutions.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="calculator.html">Solar Calculator</a></li>
+        <li><a href="site-visit.html">Book Site Visit</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul class="contact-info">
+        <li>
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Corporate Office<br>117 Oberon Business Hub,<br>Pal Gaurav Path Road,<br>Surat - 395009</span>
+        </li>
+        <li><i class="fas fa-phone"></i><a href="tel:+919377309325">+91 93773 09325</a></li>
+        <li><i class="fas fa-envelope"></i><a href="mailto:info@mahisolar.in">info@mahisolar.in</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Mahi Solar. All rights reserved. | Surat, Gujarat, India</p>
+  </div>
+</footer>
+
+<script src="../js/api.js"></script>
+<script src="../js/main.js"></script>
+<script>
+  // Authorization Guards
+  function verifyAdminAccess() {
+    const userProfileStr = localStorage.getItem('user_profile');
+    if (!userProfileStr) {
+      alert("Authentication required. Please log in first.");
+      window.location.href = "login.html";
+      return false;
+    }
+    try {
+      const user = JSON.parse(userProfileStr);
+      if (!user.is_superuser && !user.is_staff) {
+        alert("Access Denied. Admin privileges are required to view this page.");
+        window.location.href = "index.html";
+        return false;
+      }
+    } catch (e) {
+      localStorage.clear();
+      window.location.href = "login.html";
+      return false;
+    }
+    return true;
+  }
+
+  // Data Caches
+  let cachedOrders = [];
+  let cachedContacts = [];
+  let cachedVisits = [];
+  let cachedCalculator = [];
+
+  // Init Loading
+  if (verifyAdminAccess()) {
+    document.addEventListener('DOMContentLoaded', () => {
+      loadAllDashboardData();
+    });
+  }
+
+  function loadAllDashboardData() {
+    loadOrders();
+    loadContacts();
+    loadVisits();
+    loadCalculatorLeads();
+  }
+
+  // Tab switcher
+  function switchTab(tabId, btn) {
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    
+    document.getElementById(tabId).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // Helper: headers with credentials for Cross-Origin session support
+  function getFetchOptions(method = 'GET', body = null) {
+    const options = {
+      method: method,
+      headers: getAuthHeaders(),
+      credentials: 'include'
+    };
+    if (body) {
+      options.body = JSON.stringify(body);
+    }
+    return options;
+  }
+
+  // 1. Orders Operations
+  function loadOrders() {
+    fetch(`${API_BASE_URL}/orders/my-orders/?format=json`, getFetchOptions())
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.orders) {
+          cachedOrders = data.orders;
+          renderOrders(cachedOrders);
+          updateOrderStats();
+        } else {
+          showOrdersEmptyState("No orders list received.");
+        }
+      })
+      .catch(err => {
+        console.error("Orders fetching error:", err);
+        showOrdersEmptyState("Unable to fetch orders from server.");
+      });
+  }
+
+  function renderOrders(orders) {
+    const tbody = document.getElementById('ordersTableBody');
+    tbody.classList.remove('fade-in-content');
+    void tbody.offsetWidth; // trigger reflow
+    tbody.classList.add('fade-in-content');
+    if (orders.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="7" class="empty-state"><i class="fas fa-folder-open"></i><br>No orders matched the criteria.</td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = '';
+    orders.forEach(order => {
+      const orderShortId = order.order_id.substring(0, 8).toUpperCase();
+      const statusClass = `badge-${order.status}`;
+      const tr = document.createElement('tr');
+      
+      tr.innerHTML = `
+        <td><strong>#${orderShortId}</strong></td>
+        <td>${order.full_name}</td>
+        <td>${order.created_at}</td>
+        <td style="color:var(--text-green); font-weight:700;">₹${Math.round(order.total_amount).toLocaleString('en-IN')}</td>
+        <td><span style="font-size:0.85rem; font-weight:600;">${order.payment_method.toUpperCase()}</span></td>
+        <td>
+          <select class="status-select" onchange="changeOrderStatus(${order.id}, this.value, '${orderShortId}')">
+            <option value="pending" ${order.status === 'pending' ? 'selected' : ''}>Pending</option>
+            <option value="confirmed" ${order.status === 'confirmed' ? 'selected' : ''}>Confirmed</option>
+            <option value="processing" ${order.status === 'processing' ? 'selected' : ''}>Processing</option>
+            <option value="shipped" ${order.status === 'shipped' ? 'selected' : ''}>Shipped</option>
+            <option value="delivered" ${order.status === 'delivered' ? 'selected' : ''}>Delivered</option>
+            <option value="cancelled" ${order.status === 'cancelled' ? 'selected' : ''}>Cancelled</option>
+          </select>
+        </td>
+        <td style="text-align: center;">
+          <button class="act-btn" onclick="viewOrderDetail('${order.order_id}')">
+            <i class="fas fa-eye"></i> Details
+          </button>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function showOrdersEmptyState(msg) {
+    document.getElementById('ordersTableBody').innerHTML = `
+      <tr>
+        <td colspan="7" class="empty-state">
+          <i class="fas fa-box-open"></i>
+          <p>${msg}</p>
+        </td>
+      </tr>
+    `;
+  }
+
+  function updateOrderStats() {
+    document.getElementById('statTotalOrders').textContent = cachedOrders.length;
+    
+    // Revenue from non-cancelled orders
+    const nonCancelled = cachedOrders.filter(o => o.status !== 'cancelled');
+    const totalSales = nonCancelled.reduce((acc, curr) => acc + curr.total_amount, 0);
+    document.getElementById('statTotalSales').textContent = `₹${Math.round(totalSales).toLocaleString('en-IN')}`;
+  }
+
+  function filterOrders() {
+    const q = document.getElementById('orderSearch').value.toLowerCase();
+    const status = document.getElementById('orderStatusFilter').value;
+
+    const filtered = cachedOrders.filter(order => {
+      const matchSearch = order.full_name.toLowerCase().includes(q) || order.order_id.toLowerCase().includes(q);
+      const matchStatus = status === 'all' || order.status === status;
+      return matchSearch && matchStatus;
+    });
+
+    renderOrders(filtered);
+  }
+
+  function changeOrderStatus(orderId, newStatus, shortId) {
+    if (!confirm(`Are you sure you want to change order #${shortId} status to ${newStatus.toUpperCase()}?`)) {
+      loadOrders(); // Reset select
+      return;
+    }
+
+    fetch(`${API_BASE_URL}/orders/update-status/${orderId}/`, getFetchOptions('POST', { status: newStatus }))
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert(`Order #${shortId} status updated successfully.`);
+          loadOrders();
+        } else {
+          alert("Update failed: " + (data.error || "Permission denied."));
+          loadOrders();
+        }
+      })
+      .catch(err => {
+        console.error("Status update error:", err);
+        alert("Server communication error. Check settings.");
+        loadOrders();
+      });
+  }
+
+  function viewOrderDetail(orderIdUUID) {
+    fetch(`${API_BASE_URL}/orders/my-orders/${orderIdUUID}/?format=json`, getFetchOptions())
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.order) {
+          const order = data.order;
+          const modalBody = document.getElementById('adminModalOrderInfo');
+          
+          const itemsHtml = order.items.map(item => `
+            <div style="display:flex; justify-content:space-between; border-bottom:1px solid var(--border); padding:0.5rem 0;">
+              <div>
+                <strong>${item.product_name}</strong><br>
+                <span style="font-size:0.82rem; color:var(--text-muted);">₹${Math.round(item.price)} &times; ${item.quantity}</span>
+              </div>
+              <strong style="align-self:center;">₹${Math.round(item.total).toLocaleString('en-IN')}</strong>
+            </div>
+          `).join('');
+
+          modalBody.innerHTML = `
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.5rem; font-size:0.9rem; margin-bottom: 1.5rem;">
+              <div>
+                <strong style="color:var(--green-primary); display:block; margin-bottom:0.4rem;">Customer Information</strong>
+                <p><strong>Name:</strong> ${order.full_name}</p>
+                <p><strong>Email:</strong> ${order.email}</p>
+                <p><strong>Phone:</strong> ${order.phone}</p>
+              </div>
+              <div>
+                <strong style="color:var(--green-primary); display:block; margin-bottom:0.4rem;">Shipping Address</strong>
+                <p>${order.address}</p>
+                <p>${order.city}, ${order.state} - ${order.pincode}</p>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong>Payment Status:</strong> 
+              <span class="badge ${order.payment_method === 'cod' ? 'badge-processing' : 'badge-confirmed'}">
+                ${order.payment_method.toUpperCase()}
+              </span>
+            </div>
+            <h4 style="margin: 1rem 0 0.5rem; border-top:1px solid var(--border); padding-top:1rem; color:var(--green-primary);">
+              Items Summary
+            </h4>
+            ${itemsHtml}
+            <div style="display:flex; justify-content:space-between; margin-top:1.2rem; font-size:1.1rem; font-weight:800;">
+              <span>Total Bill:</span>
+              <span class="text-green">₹${Math.round(order.total_amount).toLocaleString('en-IN')}</span>
+            </div>
+            ${order.notes ? `<div style="margin-top:1rem; padding:0.8rem; background:rgba(0,0,0,0.02); border-left:4px solid var(--green-primary); font-size:0.85rem; font-style:italic;"><strong>Note:</strong> "${order.notes}"</div>` : ''}
+          `;
+          document.getElementById('adminOrderDetailModal').style.display = 'flex';
+        }
+      });
+  }
+
+  function closeAdminDetailModal() {
+    document.getElementById('adminOrderDetailModal').style.display = 'none';
+  }
+
+  // 2. Contacts Operations
+  function loadContacts() {
+    fetch(`${API_BASE_URL}/leads/contacts-list/`, getFetchOptions())
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.leads) {
+          cachedContacts = data.leads;
+          renderContacts(cachedContacts);
+          updateQueryCount();
+        } else {
+          showContactsEmptyState("No messages found.");
+        }
+      })
+      .catch(() => showContactsEmptyState("Server fetch failed."));
+  }
+
+  function renderContacts(contacts) {
+    const tbody = document.getElementById('contactsTableBody');
+    tbody.classList.remove('fade-in-content');
+    void tbody.offsetWidth; // trigger reflow
+    tbody.classList.add('fade-in-content');
+    if (contacts.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="7" class="empty-state"><i class="fas fa-folder-open"></i><br>No messages.</td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = '';
+    contacts.forEach(lead => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><strong>${lead.name}</strong></td>
+        <td><a href="mailto:${lead.email}">${lead.email}</a></td>
+        <td><a href="tel:${lead.phone}">${lead.phone}</a></td>
+        <td><strong>${lead.subject}</strong></td>
+        <td>
+          <div style="max-width: 250px; font-size:0.85rem; max-height: 80px; overflow-y:auto; font-style:italic;">
+            "${lead.message}"
+          </div>
+        </td>
+        <td>
+          <span class="badge ${lead.is_resolved ? 'badge-delivered' : 'badge-cancelled'}">
+            ${lead.is_resolved ? 'RESOLVED' : 'PENDING'}
+          </span>
+        </td>
+        <td style="text-align: center;">
+          <button class="act-btn ${lead.is_resolved ? 'act-btn-danger' : ''}" onclick="toggleContactResolve(${lead.id})">
+            <i class="fas ${lead.is_resolved ? 'fa-undo' : 'fa-check'}"></i> 
+            ${lead.is_resolved ? 'Reopen' : 'Resolve'}
+          </button>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function toggleContactResolve(id) {
+    fetch(`${API_BASE_URL}/leads/contacts-toggle/${id}/`, getFetchOptions('POST'))
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          loadContacts();
+        }
+      });
+  }
+
+  function showContactsEmptyState(msg) {
+    document.getElementById('contactsTableBody').innerHTML = `<tr><td colspan="7" class="empty-state">${msg}</td></tr>`;
+  }
+
+  function filterContacts() {
+    const q = document.getElementById('contactSearch').value.toLowerCase();
+    const filtered = cachedContacts.filter(lead => {
+      return lead.name.toLowerCase().includes(q) || lead.subject.toLowerCase().includes(q) || lead.message.toLowerCase().includes(q);
+    });
+    renderContacts(filtered);
+  }
+
+  function updateQueryCount() {
+    const pendingContacts = cachedContacts.filter(c => !c.is_resolved).length;
+    const pendingVisits = cachedVisits.filter(v => !v.is_confirmed).length;
+    document.getElementById('statTotalQueries').textContent = pendingContacts + pendingVisits;
+  }
+
+  // 3. Site Visits Operations
+  function loadVisits() {
+    fetch(`${API_BASE_URL}/leads/site-visits-list/`, getFetchOptions())
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.leads) {
+          cachedVisits = data.leads;
+          renderVisits(cachedVisits);
+          updateQueryCount();
+          document.getElementById('statTotalVisits').textContent = cachedVisits.filter(v => v.is_confirmed).length;
+        } else {
+          showVisitsEmptyState("No visit leads found.");
+        }
+      })
+      .catch(() => showVisitsEmptyState("Server fetch failed."));
+  }
+
+  function renderVisits(visits) {
+    const tbody = document.getElementById('visitsTableBody');
+    tbody.classList.remove('fade-in-content');
+    void tbody.offsetWidth; // trigger reflow
+    tbody.classList.add('fade-in-content');
+    if (visits.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="7" class="empty-state"><i class="fas fa-folder-open"></i><br>No visits.</td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = '';
+    visits.forEach(lead => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><strong>${lead.name}</strong><br><span style="font-size:0.75rem; color:var(--text-muted);">${lead.created_at}</span></td>
+        <td>
+          <a href="mailto:${lead.email}">${lead.email}</a><br>
+          <a href="tel:${lead.phone}">${lead.phone}</a>
+        </td>
+        <td>
+          <span style="font-weight:700; color:var(--green-primary);"><i class="far fa-calendar"></i> ${lead.preferred_date}</span><br>
+          <span style="font-size:0.8rem; text-transform:uppercase;"><i class="far fa-clock"></i> ${lead.preferred_slot}</span>
+        </td>
+        <td><span style="font-size:0.8rem; font-style:italic;">"${lead.notes || 'None'}"</span></td>
+        <td><strong>${lead.city}</strong><br><span style="font-size:0.8rem;">${lead.address}</span></td>
+        <td>
+          <span class="badge ${lead.is_confirmed ? 'badge-delivered' : 'badge-pending'}">
+            ${lead.is_confirmed ? 'CONFIRMED' : 'PENDING'}
+          </span>
+        </td>
+        <td style="text-align: center;">
+          <button class="act-btn ${lead.is_confirmed ? 'act-btn-danger' : ''}" onclick="toggleVisitConfirm(${lead.id})">
+            <i class="fas ${lead.is_confirmed ? 'fa-undo' : 'fa-check'}"></i> 
+            ${lead.is_confirmed ? 'Unconfirm' : 'Confirm'}
+          </button>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function toggleVisitConfirm(id) {
+    fetch(`${API_BASE_URL}/leads/site-visits-toggle/${id}/`, getFetchOptions('POST'))
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          loadVisits();
+        }
+      });
+  }
+
+  function showVisitsEmptyState(msg) {
+    document.getElementById('visitsTableBody').innerHTML = `<tr><td colspan="7" class="empty-state">${msg}</td></tr>`;
+  }
+
+  function filterVisits() {
+    const q = document.getElementById('visitSearch').value.toLowerCase();
+    const filtered = cachedVisits.filter(lead => {
+      return lead.name.toLowerCase().includes(q) || lead.city.toLowerCase().includes(q) || lead.address.toLowerCase().includes(q);
+    });
+    renderVisits(filtered);
+  }
+
+  // 4. Calculator Leads Operations
+  function loadCalculatorLeads() {
+    fetch(`${API_BASE_URL}/leads/calculator-list/`, getFetchOptions())
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.leads) {
+          cachedCalculator = data.leads;
+          renderCalculator(cachedCalculator);
+        } else {
+          showCalculatorEmptyState("No calculations listed.");
+        }
+      })
+      .catch(() => showCalculatorEmptyState("Server fetch failed."));
+  }
+
+  function renderCalculator(leads) {
+    const tbody = document.getElementById('calculatorTableBody');
+    tbody.classList.remove('fade-in-content');
+    void tbody.offsetWidth; // trigger reflow
+    tbody.classList.add('fade-in-content');
+    if (leads.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="8" class="empty-state"><i class="fas fa-folder-open"></i><br>No calculations logged yet.</td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = '';
+    leads.forEach(lead => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><strong>${lead.name || 'Anonymous User'}</strong></td>
+        <td>${lead.phone ? `<a href="tel:${lead.phone}">${lead.phone}</a>` : '—'}</td>
+        <td>${lead.email ? `<a href="mailto:${lead.email}">${lead.email}</a>` : '—'}</td>
+        <td>₹${Math.round(lead.monthly_bill).toLocaleString('en-IN')}</td>
+        <td>
+          <span style="font-weight:700; color:var(--green-primary);">${lead.recommended_kw} kW</span><br>
+          <span style="font-size:0.8rem; color:var(--text-muted);">${lead.units_per_month} Units/mo</span>
+        </td>
+        <td>${lead.roof_area ? `${Math.round(lead.roof_area)} sq ft` : '—'}</td>
+        <td style="font-weight:700; color:var(--text-orange);">₹${Math.round(lead.estimated_cost).toLocaleString('en-IN')}</td>
+        <td style="font-size:0.8rem; color:var(--text-muted);">${lead.created_at}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function showCalculatorEmptyState(msg) {
+    document.getElementById('calculatorTableBody').innerHTML = `<tr><td colspan="8" class="empty-state">${msg}</td></tr>`;
+  }
+
+  function filterCalculator() {
+    const q = document.getElementById('calcSearch').value.toLowerCase();
+    const filtered = cachedCalculator.filter(lead => {
+      return (lead.name || '').toLowerCase().includes(q) || (lead.email || '').toLowerCase().includes(q);
+    });
+    renderCalculator(filtered);
+  }
+
+  // Click outside to close modal
+  window.addEventListener('click', (e) => {
+    const modal = document.getElementById('adminOrderDetailModal');
+    if (e.target === modal) closeAdminDetailModal();
+  });
+</script>
+</body>
+</html>

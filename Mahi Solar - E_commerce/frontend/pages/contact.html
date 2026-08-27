@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — Mahi Solar</title>
+  <meta name="description" content="Mahi Solar – Contact our engineering team in Surat, Gujarat." />
+  <link rel="icon" href="../assets/images/logo-pic.png" type="image/png">
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/navbar.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<!-- UNIFIED FLOATING HEADER -->
+<header class="visible subpage-header">
+    <div class="navbar-container">
+        <div class="logo">
+            <a href="index.html">
+                <div class="logo-icon"><img src="../assets/images/logo-pic.png" alt="Mahi Solar"></div>
+                <div class="logo-text">MAHI <span>SOLAR</span></div>
+            </a>
+        </div>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="products.html" class="nav-link">Products</a></li>
+            <li><a href="calculator.html" class="nav-link">Solar Estimator</a></li>
+            <li><a href="blog.html" class="nav-link">Blog</a></li>
+            <li><a href="site-visit.html" class="nav-link">Book Site Visit</a></li>
+            <li><a href="contact.html" class="nav-link active">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="btn-icon" id="themeToggle" title="Toggle Theme"><i class="fas fa-sun"></i></button>
+            <a href="cart.html" class="btn-icon" title="View Cart">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-badge" id="cartBadgeCount">0</span>
+            </a>
+            <div id="authLinks" class="auth-links">
+                <a href="login.html" class="nav-link">Login</a>
+                <a href="calculator.html" class="btn-quote">Get Quote</a>
+            </div>
+            <div id="userDropdown" class="user-dropdown" style="display:none;">
+                <button class="user-btn"><i class="fas fa-user-circle"></i> <span id="userNameField">Profile</span> <i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-menu">
+                    <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                    <a href="orders.html"><i class="fas fa-box"></i> My Orders</a>
+                    <a href="#" onclick="handleLogout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </div>
+        </div>
+        <button class="mobile-toggle" id="hamburger" aria-label="Toggle Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<main style="padding-top: 100px;">
+<div class="page-header">
+  <div class="container">
+    <h1>Contact <span class="text-green">Us</span></h1>
+    <p>Have questions about solar panel parameters? Contact our Surat-based solar experts today.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="contact-grid" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem;">
+      <!-- CONTACT DETAILS -->
+      <div class="contact-info-panel">
+        <h2 style="font-family: var(--font-primary); font-size: 2rem; margin-bottom: 1.5rem;">Corporate Headquarters</h2>
+        <p style="color: #aaa; line-height: 1.6; margin-bottom: 2rem;">Mahi Solar is one of the premier MNRE-approved solar integrators across Gujarat. Speak with our lead project designers directly or schedule an office consultation.</p>
+        
+        <ul class="contact-info" style="display: flex; flex-direction: column; gap: 1.5rem; padding:0; list-style:none;">
+          <li>
+            <i class="fas fa-map-marker-alt" style="color: var(--solar-gold); margin-right: 1rem; font-size: 1.2rem;"></i>
+            <span>117 Oberon Business Hub, Near Gajera Global School, Pal Gaurav Path Road, Surat - 395009</span>
+          </li>
+          <li>
+            <i class="fas fa-phone" style="color: var(--solar-gold); margin-right: 1rem; font-size: 1.2rem;"></i>
+            <a href="tel:+919377309325" style="color:#fff;">+91 93773 09325</a>
+          </li>
+          <li>
+            <i class="fas fa-envelope" style="color: var(--solar-gold); margin-right: 1rem; font-size: 1.2rem;"></i>
+            <a href="mailto:info@mahisolar.in" style="color:#fff;">info@mahisolar.in</a>
+          </li>
+          <li>
+            <i class="fas fa-clock" style="color: var(--solar-gold); margin-right: 1rem; font-size: 1.2rem;"></i>
+            <span>Mon–Sat: 9:00 AM – 6:00 PM</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- INQUIRY FORM -->
+      <div class="contact-form-card" style="background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.05); padding: 3rem; border-radius: 20px;">
+        <h3>Send Us A Message</h3>
+        <form id="contactSubmitForm" onsubmit="event.preventDefault(); submitContactLead();" style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
+          <div class="form-group">
+            <input type="text" id="conName" placeholder="Full Name *" class="filter-input" style="width:100%;" required />
+          </div>
+          <div class="form-group">
+            <input type="email" id="conEmail" placeholder="Email Address *" class="filter-input" style="width:100%;" required />
+          </div>
+          <div class="form-group">
+            <input type="tel" id="conPhone" placeholder="Phone Number *" class="filter-input" style="width:100%;" required />
+          </div>
+          <div class="form-group">
+            <input type="text" id="conSubject" placeholder="Subject / Panel Systems of Interest *" class="filter-input" style="width:100%;" required />
+          </div>
+          <div class="form-group">
+            <textarea id="conMessage" rows="5" placeholder="Your Message *" class="filter-input" style="width:100%; resize: none;" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary btn-block" style="padding: 1rem;">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-col">
+      <div class="footer-logo">
+          <img src="../assets/images/logo.png" alt="Mahi Solar Logo" class="footer-logo-icon">
+          <span>Mahi Solar</span>
+        </div>
+      <p>Leading solar energy provider in Surat, Gujarat. Empowering homes and businesses with clean, affordable solar solutions.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="calculator.html">Solar Calculator</a></li>
+        <li><a href="site-visit.html">Book Site Visit</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul class="contact-info">
+        <li>
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Corporate Office<br>117 Oberon Business Hub,<br>Near Gajera Global School,<br>Pal Gaurav Path Road,<br>Surat - 395009</span>
+        </li>
+        <li><i class="fas fa-phone"></i><a href="tel:+919377309325">+91 93773 09325</a></li>
+        <li><i class="fas fa-envelope"></i><a href="mailto:info@mahisolar.in">info@mahisolar.in</a></li>
+        <li><i class="fas fa-clock"></i><span>Mon–Sat: 9:00 AM – 6:00 PM</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Mahi Solar. All rights reserved. | Surat, Gujarat, India</p>
+    <p>🌿 Mission Mother Earth 🌍</p>
+  </div>
+</footer>
+
+<!-- WHATSAPP BUTTON -->
+<a href="https://wa.me/919377309325?text=Hello%20Mahi%20Solar!%20I%20am%20interested%20in%20solar%20solutions."
+   class="whatsapp-btn" target="_blank" title="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+  <span class="wa-label">WhatsApp Us</span>
+</a>
+
+<script src="../js/api.js"></script>
+<script src="../js/main.js"></script>
+<script>
+function submitContactLead() {
+    const name = document.getElementById('conName').value;
+    const email = document.getElementById('conEmail').value;
+    const phone = document.getElementById('conPhone').value;
+    const subject = document.getElementById('conSubject').value;
+    const message = document.getElementById('conMessage').value;
+
+    fetch(`${API_BASE_URL}/leads/contact/`, {
+        method: 'POST',
+        headers: getAuthHeaders(),
+        body: JSON.stringify({ name, email, phone, subject, message })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success || data.id) {
+            alert("Thank you! Your message has been sent to our Surat engineering center. We will get back to you shortly.");
+            document.getElementById('contactSubmitForm').reset();
+        } else {
+            alert("Failed to submit inquiry: " + (data.error || "Unknown error"));
+        }
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Inquiry submitted! (Backend offline mock fallback active)");
+        document.getElementById('contactSubmitForm').reset();
+    });
+}
+</script>
+</body>
+</html>

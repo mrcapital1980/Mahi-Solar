@@ -1,0 +1,395 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mahi Solar – Best Solar Panels in Surat, Gujarat</title>
+  <meta name="description" content="Mahi Solar – Leading solar panel supplier and installer in Surat, Gujarat. Affordable solar solutions for homes and businesses." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  {% block extra_css %}{% endblock %}
+
+<link rel="stylesheet" href="../css/intro.css">
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <img src="../assets/images/logo-pic.png" alt="Mahi Solar Logo" class="logo-icon">
+    </a>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="products.html" class="nav-link">Products</a></li>
+      <li><a href="calculator.html" class="nav-link">Calculator</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="site_visit.html" class="nav-link">Book Site Visit</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" title="Toggle Theme">
+        <i class="fas fa-moon"></i>
+      </button>
+      <a href="cart.html" class="cart-btn">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge" id="cartBadgeCount">0</span>
+      </a>
+      <div id="authLinks" class="auth-links">
+        <a href="login.html" class="btn-nav-login">Login</a>
+        <a href="register.html" class="btn-nav-register">Register</a>
+      </div><div id="userDropdown" class="user-dropdown" style="display:none;">  <button class="user-btn"><i class="fas fa-user-circle"></i> <span id="userNameField">Profile</span> <i class="fas fa-chevron-down"></i></button>  <div class="dropdown-menu"><a href="profile.html"><i class="fas fa-user"></i> Profile</a><a href="orders.html"><i class="fas fa-box"></i> My Orders</a><a href="#" onclick="handleLogout()"><i class="fas fa-sign-out-alt"></i> Logout</a></div></div>
+    </div>
+    <button class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MESSAGES -->
+{% if messages %}
+<div class="messages-container">
+  {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+      <span>{{ message }}</span>
+      <button onclick="this.parentElement.remove()">×</button>
+    </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<!-- MAIN CONTENT -->
+<main>
+  
+
+
+<!-- CINEMATIC INTRO -->
+<div id="intro-container">
+  <div class="intro-scene" id="scene1">
+    <h1 class="intro-headline">Welcome to <span class="highlight">Mahi Solar</span></h1>
+  </div>
+  
+  <div class="intro-scene" id="scene2">
+    <h2 class="intro-headline glow">Energy is the Future</h2>
+    <div class="glow-orb"></div>
+  </div>
+  
+  <div class="intro-scene" id="scene3">
+    <div class="solar-concept">
+      <div class="earth"></div>
+      <div class="sunrays"></div>
+      <h2 class="intro-headline">Harness the Sun</h2>
+    </div>
+  </div>
+  
+  <div class="intro-scene" id="scene4">
+    <div class="floating-panels">
+      <div class="intro-panel p1"></div>
+      <div class="intro-panel p2"></div>
+      <div class="intro-panel p3"></div>
+    </div>
+    <h2 class="intro-headline">Clean Energy Mastery</h2>
+  </div>
+  
+  <div class="intro-scene" id="scene5">
+    <h1 class="intro-headline highlight massive">Power Your Home</h1>
+  </div>
+</div>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge"><i class="fas fa-leaf"></i> Mission Mother Earth
+      <span class="rotating-earth">🌍</span>
+    </div>
+    <h1>Power Your Future<br>with <span class="highlight">Solar Energy</span></h1>
+    <p>Mahi Solar provides top-quality solar panels, inverters & complete solar solutions for homes and businesses in Surat & Gujarat. Save up to 90% on electricity bills.</p>
+    <div class="hero-actions">
+      <a href="products.html" class="btn-primary">Explore Products</a>
+      <a href="calculator.html" class="btn-outline">Calculate Savings</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><strong>500+</strong><span>Installations</span></div>
+      <div class="stat"><strong>10MW+</strong><span>Capacity Installed</span></div>
+      <div class="stat"><strong>5★</strong><span>Customer Rating</span></div>
+    </div>
+  </div>
+  <div class="hero-image">
+    <div class="solar-animation">
+      <div class="sun-ring"></div>
+      <div class="sun-core">☀</div>
+      <div class="panel-card">
+        <div class="panel-grid"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES STRIP -->
+<section class="features-strip">
+  <div class="features-grid">
+    <div class="feature-item">
+      <i class="fas fa-shield-alt"></i>
+      <div><strong>25 Year Warranty</strong><p>On all solar panels</p></div>
+    </div>
+    <div class="feature-item">
+      <i class="fas fa-tools"></i>
+      <div><strong>Free Installation</strong><p>Professional setup</p></div>
+    </div>
+    <div class="feature-item">
+      <i class="fas fa-rupee-sign"></i>
+      <div><strong>Govt. Subsidy</strong><p>Up to ₹78,000</p></div>
+    </div>
+    <div class="feature-item">
+      <i class="fas fa-headset"></i>
+      <div><strong>24/7 Support</strong><p>After-sale service</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="section categories-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Shop by <span class="text-green">Category</span></h2>
+      <p>Everything you need for a complete solar setup</p>
+    </div>
+    <div class="categories-grid">
+      {% for cat in categories %}
+      <a href="products.html?category={{ cat.slug }}" class="category-card">
+        {% if cat.image %}
+          <img src="{{ cat.image.url }}" alt="{{ cat.name }}" />
+        {% else %}
+          <div class="cat-icon">
+            {% if 'panel' in cat.name|lower %}<i class="fas fa-solar-panel"></i>
+            {% elif 'inverter' in cat.name|lower %}<i class="fas fa-plug"></i>
+            {% elif 'battery' in cat.name|lower %}<i class="fas fa-battery-full"></i>
+            {% else %}<i class="fas fa-sun"></i>{% endif %}
+          </div>
+        {% endif %}
+        <span>{{ cat.name }}</span>
+      </a>
+      {% empty %}
+      <a href="products.html" class="category-card"><div class="cat-icon"><i class="fas fa-solar-panel"></i></div><span>Solar Panels</span></a>
+      <a href="products.html" class="category-card"><div class="cat-icon"><i class="fas fa-plug"></i></div><span>Inverters</span></a>
+      <a href="products.html" class="category-card"><div class="cat-icon"><i class="fas fa-battery-full"></i></div><span>Batteries</span></a>
+      <a href="products.html" class="category-card"><div class="cat-icon"><i class="fas fa-toolbox"></i></div><span>Complete Kits</span></a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PRODUCTS -->
+<section class="section products-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Featured <span class="text-green">Products</span></h2>
+      <a href="products.html" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="products-grid">
+      {% for product in featured_products %}
+      <div class="product-card">
+        <div class="product-badge">
+          {% if product.discount_percent > 0 %}<span class="badge-sale">{{ product.discount_percent }}% OFF</span>{% endif %}
+          {% if product.is_featured %}<span class="badge-featured">Featured</span>{% endif %}
+        </div>
+        <a href="{% url 'product_detail' product.slug %}">
+          {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-img" />
+          {% else %}
+            <div class="product-img-placeholder"><i class="fas fa-solar-panel"></i></div>
+          {% endif %}
+        </a>
+        <div class="product-info">
+          <div class="product-category">{{ product.category.name|default:"Solar" }}</div>
+          <a href="{% url 'product_detail' product.slug %}"><h3>{{ product.name }}</h3></a>
+          <div class="product-rating">
+            {% with rating=product.avg_rating %}
+            {% for i in "12345" %}
+              {% if forloop.counter <= rating %}<i class="fas fa-star"></i>{% else %}<i class="far fa-star"></i>{% endif %}
+            {% endfor %}
+            <span>({{ product.reviews.count }})</span>
+            {% endwith %}
+          </div>
+          <div class="product-price">
+            {% if product.discounted_price %}
+              <span class="price-current">₹{{ product.discounted_price|floatformat:0 }}</span>
+              <span class="price-original">₹{{ product.price|floatformat:0 }}</span>
+            {% else %}
+              <span class="price-current">₹{{ product.price|floatformat:0 }}</span>
+            {% endif %}
+          </div>
+          <div class="product-actions">
+            <form method="post" action="{% url 'add_to_cart' product.id %}">
+              {% csrf_token %}
+              <button type="submit" class="btn-add-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+            </form>
+            <a href="{% url 'product_detail' product.slug %}" class="btn-view">View</a>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <div class="empty-state"><p>Products coming soon. <a href="contact.html">Contact us</a> for quotes.</p></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="section why-section">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-content">
+        <div class="section-tag">Why Choose Mahi Solar?</div>
+        <h2>Gujarat's Trusted <span class="text-green">Solar Partner</span></h2>
+        <p>With over 500 successful installations across Surat and Gujarat, we deliver end-to-end solar solutions with premium quality products and unmatched after-sales service.</p>
+        <ul class="why-list">
+          <li><i class="fas fa-check-circle"></i> MNRE Approved Installer</li>
+          <li><i class="fas fa-check-circle"></i> Tier-1 Solar Panel Brands</li>
+          <li><i class="fas fa-check-circle"></i> Net Metering Assistance</li>
+          <li><i class="fas fa-check-circle"></i> Government Subsidy Processing</li>
+          <li><i class="fas fa-check-circle"></i> 5-Year AMC Support</li>
+          <li><i class="fas fa-check-circle"></i> Zero Hidden Costs</li>
+        </ul>
+        <a href="site_visit.html" class="btn-primary">Book Free Site Visit</a>
+      </div>
+      <div class="why-stats">
+        <div class="stat-card"><div class="stat-num">500+</div><div class="stat-label">Happy Customers</div></div>
+        <div class="stat-card"><div class="stat-num">10MW</div><div class="stat-label">Installed Capacity</div></div>
+        <div class="stat-card"><div class="stat-num">25yr</div><div class="stat-label">Panel Warranty</div></div>
+        <div class="stat-card"><div class="stat-num">90%</div><div class="stat-label">Avg Bill Savings</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLAR CALCULATOR CTA -->
+<section class="section calc-cta">
+  <div class="container">
+    <div class="calc-cta-inner">
+      <div class="calc-icon"><i class="fas fa-calculator"></i></div>
+      <div class="calc-text">
+        <h2>How Much Can You Save?</h2>
+        <p>Use our free solar savings calculator to find out exactly how much you can save on your electricity bill.</p>
+      </div>
+      <a href="calculator.html" class="btn-primary btn-lg">Calculate Now <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testimonials-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>What Our <span class="text-green">Customers Say</span></h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"Excellent service! Mahi Solar installed a 5KW system on my home in Surat. My electricity bill went from ₹4,500 to nearly zero. Highly recommended!"</p>
+        <div class="testimonial-author"><strong>Rajesh Patel</strong><span>Surat, Gujarat</span></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"Very professional team. They handled everything from subsidy paperwork to net metering. Best solar company in Surat without doubt."</p>
+        <div class="testimonial-author"><strong>Priya Shah</strong><span>Adajan, Surat</span></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"I installed a 3KW system for my textile unit. The ROI has been amazing – we recovered the cost in just 3 years. Mahi Solar is the best!"</p>
+        <div class="testimonial-author"><strong>Haresh Desai</strong><span>Udhna, Surat</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-col">
+      <div class="footer-logo">
+          <img src="../assets/images/logo.png" alt="Mahi Solar Logo" class="footer-logo-icon">
+          <span>Mahi Solar</span>
+        </div>
+      <p>Leading solar energy provider in Surat, Gujarat. Empowering homes and businesses with clean, affordable solar solutions.</p>
+<!--      <div class="social-links">-->
+<!--        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>-->
+<!--        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>-->
+<!--        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>-->
+<!--        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>-->
+<!--      </div>-->
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="calculator.html">Solar Calculator</a></li>
+        <li><a href="site_visit.html">Book Site Visit</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+
+<!--    <div class="footer-col">-->
+<!--      <h4>Contact</h4>-->
+<!--      <ul class="contact-info">-->
+<!--        <li><i class="fas fa-map-marker-alt"></i> Corporate Office address-->
+<!--            <br>117 Oberon business hub, near gajera global school, pal Gaurav path road ,-->
+<!--            Surat -395009</li>-->
+<!--        <li><i class="fas fa-phone"></i> <a href="tel:+919377309325">+91 93773 09325</a></li>-->
+<!--        <li><i class="fas fa-envelope"></i> <a href="mailto:info@mahisolar.in">info@mahisolar.in</a></li>-->
+<!--        <li><i class="fas fa-clock"></i> Mon–Sat: 9:00 AM – 6:00 PM</li>-->
+<!--      </ul>-->
+<!--    </div>-->
+      <div class="footer-col">
+  <h4>Contact</h4>
+  <ul class="contact-info">
+    <li>
+      <i class="fas fa-map-marker-alt"></i>
+      <span>
+        Corporate Office<br>
+        117 Oberon Business Hub,<br>
+        Near Gajera Global School,<br>
+        Pal Gaurav Path Road,<br>
+        Surat - 395009
+      </span>
+    </li>
+    <li>
+      <i class="fas fa-phone"></i>
+      <a href="tel:+919377309325">+91 93773 09325</a>
+    </li>
+    <li>
+      <i class="fas fa-envelope"></i>
+      <a href="mailto:info@mahisolar.in">info@mahisolar.in</a>
+    </li>
+    <li>
+      <i class="fas fa-clock"></i>
+      <span>Mon–Sat: 9:00 AM – 6:00 PM</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Mahi Solar. All rights reserved. | Surat, Gujarat, India</p>
+    <p>🌿 Mission Mother Earth 🌍</p>
+  </div>
+</footer>
+
+<!-- WHATSAPP BUTTON -->
+<a href="https://wa.me/919377309325?text=Hello%20Mahi%20Solar!%20I%20am%20interested%20in%20solar%20solutions."
+   class="whatsapp-btn" target="_blank" title="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+  <span class="wa-label">WhatsApp Us</span>
+</a>
+
+<script src="../js/main.js"></script>
+{% block extra_js %}

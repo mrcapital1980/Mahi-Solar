@@ -1,0 +1,22 @@
+GoDaddy (Domain Registrar) 
+			↓ 
+Cloudflare (DNS + SSL + CDN + Security) 
+			↓ 
+Cloudflare Pages (Frontend Hosting) 
+			↓ 
+Render (Django REST API Backend) 
+			↓ 
+Render PostgreSQL (Database)
+
+(Architecture Needed For Your Deployment : 
+Browser
+   ↓
+Cloudflare Pages
+   ↓
+Frontend (HTML/CSS/JS)
+   ↓
+API Calls
+   ↓
+Render Django REST API
+   ↓
+PostgreSQL)

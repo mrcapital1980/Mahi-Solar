@@ -1,0 +1,35 @@
+[
+  {
+    "model": "products.category",
+    "pk": 1,
+    "fields": {
+      "name": "Solar Panels",
+      "slug": "solar-panels",
+      "description": "High-efficiency photovoltaic modules designed for maximum sunlight conversion and architectural integration.",
+      "is_active": true,
+      "created_at": "2026-06-08T00:00:00Z"
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 2,
+    "fields": {
+      "name": "Solar Inverters",
+      "slug": "solar-inverters",
+      "description": "Smart grid-tied, hybrid, and off-grid inverters managing power conversion and telemetry data.",
+      "is_active": true,
+      "created_at": "2026-06-08T00:00:00Z"
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 3,
+    "fields": {
+      "name": "Solar Batteries",
+      "slug": "solar-batteries",
+      "description": "Lithium iron phosphate (LiFePO4) storage ecosystems for uninterrupted grid backup and night operations.",
+      "is_active": true,
+      "created_at": "2026-06-08T00:00:00Z"
+    }
+  }
+]

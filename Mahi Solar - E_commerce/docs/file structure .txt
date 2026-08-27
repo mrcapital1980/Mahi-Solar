@@ -1,0 +1,257 @@
+mahi-solar/
+│
+├── frontend/                                    # Cloudflare Pages
+│
+│   ├── public/
+│   │   ├── favicon.ico
+│   │   ├── robots.txt
+│   │   ├── sitemap.xml
+│   │   ├── manifest.json
+│   │   └── site.webmanifest
+│   │
+│   ├── pages/
+│   │
+│   │   ├── index.html
+│   │   ├── products.html
+│   │   ├── product-detail.html
+│   │   ├── cart.html
+│   │   ├── checkout.html
+│   │   ├── calculator.html
+│   │   ├── blog.html
+│   │   ├── blog-detail.html
+│   │   ├── contact.html
+│   │   ├── site-visit.html
+│   │   ├── login.html
+│   │   ├── register.html
+│   │   ├── profile.html
+│   │   └── 404.html
+│   │
+│   ├── assets/
+│   │
+│   │   ├── images/
+│   │   │
+│   │   ├── logo/
+│   │   ├── hero/
+│   │   ├── products/
+│   │   ├── categories/
+│   │   ├── services/
+│   │   ├── blog/
+│   │   ├── testimonials/
+│   │   └── icons/
+│   │
+│   │   ├── models/
+│   │   │
+│   │   └── solar-panel.glb
+│   │
+│   │   ├── videos/
+│   │   └── fonts/
+│   │
+│   ├── css/
+│   │
+│   │   ├── global.css
+│   │   ├── variables.css
+│   │   ├── navbar.css
+│   │   ├── footer.css
+│   │   ├── home.css
+│   │   ├── products.css
+│   │   ├── product-detail.css
+│   │   ├── calculator.css
+│   │   ├── blog.css
+│   │   ├── auth.css
+│   │   ├── cart.css
+│   │   ├── checkout.css
+│   │   ├── contact.css
+│   │   ├── profile.css
+│   │   ├── animations.css
+│   │   └── responsive.css
+│   │
+│   ├── js/
+│   │
+│   │   ├── api/
+│   │   │
+│   │   ├── config.js
+│   │   ├── auth.js
+│   │   ├── products.js
+│   │   ├── orders.js
+│   │   ├── leads.js
+│   │   ├── calculator.js
+│   │   ├── blog.js
+│   │   └── payments.js
+│   │
+│   │
+│   │   ├── intro/
+│   │   │
+│   │   ├── intro.js
+│   │   ├── particles.js
+│   │   ├── solar-panel.js
+│   │   ├── energy-flow.js
+│   │   ├── service-cards.js
+│   │   ├── metrics.js
+│   │   ├── hero-transition.js
+│   │   │
+│   │   ├── timelines/
+│   │   │
+│   │   ├── particle-timeline.js
+│   │   ├── panel-timeline.js
+│   │   ├── services-timeline.js
+│   │   ├── metrics-timeline.js
+│   │   └── hero-timeline.js
+│   │
+│   │
+│   │   ├── components/
+│   │   │
+│   │   ├── navbar.js
+│   │   ├── footer.js
+│   │   ├── modal.js
+│   │   ├── loader.js
+│   │   ├── cart.js
+│   │   └── pagination.js
+│   │
+│   │
+│   │   ├── pages/
+│   │   │
+│   │   ├── home.js
+│   │   ├── products-page.js
+│   │   ├── product-detail.js
+│   │   ├── cart-page.js
+│   │   ├── checkout-page.js
+│   │   ├── calculator-page.js
+│   │   ├── blog-page.js
+│   │   ├── contact-page.js
+│   │   ├── login-page.js
+│   │   ├── register-page.js
+│   │   └── profile-page.js
+│   │
+│   │
+│   │   ├── utils/
+│   │   │
+│   │   ├── helpers.js
+│   │   ├── validators.js
+│   │   ├── constants.js
+│   │   ├── storage.js
+│   │   └── formatters.js
+│   │
+│   │
+│   │   └── main.js
+│   │
+│   ├── .env
+│   └── README.md
+│
+│
+├── backend/                                     # Render
+│
+│   ├── manage.py
+│   │
+│   ├── config/
+│   │
+│   │   ├── settings/
+│   │   │
+│   │   ├── base.py
+│   │   ├── development.py
+│   │   └── production.py
+│   │
+│   │   ├── urls.py
+│   │   ├── asgi.py
+│   │   └── wsgi.py
+│   │
+│   │
+│   ├── apps/
+│   │
+│   │   ├── accounts/
+│   │   │   ├── migrations/
+│   │   │   ├── models.py
+│   │   │   ├── serializers.py
+│   │   │   ├── views.py
+│   │   │   ├── urls.py
+│   │   │   └── permissions.py
+│   │
+│   │   ├── products/
+│   │   │   ├── migrations/
+│   │   │   ├── models.py
+│   │   │   ├── serializers.py
+│   │   │   ├── views.py
+│   │   │   ├── urls.py
+│   │   │   └── filters.py
+│   │
+│   │   ├── orders/
+│   │   │   ├── migrations/
+│   │   │   ├── models.py
+│   │   │   ├── serializers.py
+│   │   │   ├── views.py
+│   │   │   ├── urls.py
+│   │   │   └── services.py
+│   │
+│   │   ├── blog/
+│   │   │   ├── migrations/
+│   │   │   ├── models.py
+│   │   │   ├── serializers.py
+│   │   │   ├── views.py
+│   │   │   └── urls.py
+│   │
+│   │   ├── calculator/
+│   │   │   ├── migrations/
+│   │   │   ├── models.py
+│   │   │   ├── serializers.py
+│   │   │   ├── views.py
+│   │   │   └── urls.py
+│   │
+│   │   ├── leads/
+│   │   │   ├── migrations/
+│   │   │   ├── models.py
+│   │   │   ├── serializers.py
+│   │   │   ├── views.py
+│   │   │   └── urls.py
+│   │
+│   │   └── payments/
+│   │       ├── migrations/
+│   │       ├── models.py
+│   │       ├── services.py
+│   │       ├── views.py
+│   │       └── urls.py
+│   │
+│   │
+│   ├── core/
+│   │
+│   │   ├── permissions.py
+│   │   ├── pagination.py
+│   │   ├── validators.py
+│   │   ├── utils.py
+│   │   └── constants.py
+│   │
+│   │
+│   ├── media/
+│   │
+│   ├── static/
+│   │
+│   ├── requirements.txt
+│   ├── render.yaml
+│   ├── .env
+│   └── README.md
+│
+│
+├── database/
+│
+│   ├── schema/
+│   │   └── database_schema.md
+│   │
+│   ├── seeds/
+│   │   ├── categories.json
+│   │   ├── products.json
+│   │   └── blog_posts.json
+│   │
+│   └── backups/
+│
+│
+├── docs/
+│
+│   ├── PROJECT_ARCHITECTURE.md
+│   ├── API_DOCUMENTATION.md
+│   ├── DATABASE_SCHEMA.md
+│   ├── DEPLOYMENT_GUIDE.md
+│   ├── SECURITY_GUIDE.md
+│   └── INTRO_ANIMATION_FLOW.md
+│
+│
+├── .gitignore
+├── README.md
+└── LICENSE

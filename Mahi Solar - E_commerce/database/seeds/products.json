@@ -1,0 +1,86 @@
+[
+  {
+    "model": "products.product",
+    "pk": 1,
+    "fields": {
+      "category": 1,
+      "name": "Mahi Monocrystalline Half-Cell 550W Panel",
+      "slug": "mahi-mono-half-cell-550w",
+      "description": "Engineered with half-cut cell technology, this premium 550W module delivers peak solar output even in cloudy conditions or partial shade. Features an anodized aluminum alloy frame and anti-reflective tempered glass.",
+      "short_description": "Premium 550W half-cell solar panel with 22.8% efficiency rating.",
+      "price": "28500.00",
+      "discounted_price": "24999.00",
+      "wattage": "550W",
+      "brand": "Mahi Solar",
+      "warranty_years": 25,
+      "stock": 45,
+      "is_active": true,
+      "is_featured": true,
+      "specifications": {
+        "efficiency": "22.8%",
+        "cell_type": "Monocrystalline Perc",
+        "dimensions": "2278 x 1134 x 35 mm",
+        "weight": "28.6 kg",
+        "open_circuit_voltage": "49.6V"
+      },
+      "created_at": "2026-06-08T00:00:00Z",
+      "updated_at": "2026-06-08T00:00:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 2,
+    "fields": {
+      "category": 2,
+      "name": "Mahi Smart Hybrid Inverter 5KW",
+      "slug": "mahi-smart-hybrid-inverter-5kw",
+      "description": "Next-generation 5KW hybrid inverter facilitating grid-tie telemetry, battery storage management, and automatic micro-grid transition within 10 milliseconds during load shedding. Includes built-in Wi-Fi monitoring.",
+      "short_description": "5KW intelligent hybrid inverter with real-time app diagnostics.",
+      "price": "85000.00",
+      "discounted_price": "72000.00",
+      "wattage": "5KW",
+      "brand": "Mahi Solar",
+      "warranty_years": 5,
+      "stock": 20,
+      "is_active": true,
+      "is_featured": true,
+      "specifications": {
+        "rated_power": "5000W",
+        "peak_efficiency": "97.6%",
+        "max_pv_input": "6500W",
+        "protection": "IP65 Waterproof",
+        "battery_input": "48V Lead-acid / Lithium"
+      },
+      "created_at": "2026-06-08T00:00:00Z",
+      "updated_at": "2026-06-08T00:00:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 3,
+    "fields": {
+      "category": 3,
+      "name": "Mahi PowerWall LiFePO4 Battery 10KWh",
+      "slug": "mahi-powerwall-lifepo4-10kwh",
+      "description": "Ultra-reliable Lithium Iron Phosphate (LiFePO4) solar storage battery boasting a capacity of 10KWh and up to 6000 cycles at 80% Depth of Discharge. Features dynamic battery management system (BMS) controls.",
+      "short_description": "10KWh high-capacity LiFePO4 battery wall for solar storage storage.",
+      "price": "295000.00",
+      "discounted_price": "249000.00",
+      "wattage": "10KW",
+      "brand": "Mahi Solar",
+      "warranty_years": 10,
+      "stock": 12,
+      "is_active": true,
+      "is_featured": true,
+      "specifications": {
+        "capacity": "10 KWh",
+        "nominal_voltage": "51.2V",
+        "max_charge_current": "100A",
+        "cycles": "6000+ cycles @ 80% DOD",
+        "weight": "85 kg"
+      },
+      "created_at": "2026-06-08T00:00:00Z",
+      "updated_at": "2026-06-08T00:00:00Z"
+    }
+  }
+]

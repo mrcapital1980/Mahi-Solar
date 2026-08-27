@@ -1,0 +1,83 @@
+/* 
+ * MAHI SOLAR — PREMIUM DESIGN SYSTEM VARIABLES
+ * Custom curated design tokens mimicking high-end tech firms (Apple, Tesla, Stripe, Rivian).
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Color Palette */
+    --deep-black: #050505;
+    --charcoal-grey: #0F0F11;
+    --card-bg-dark: #16161A;
+    --white: #FFFFFF;
+    
+    /* Global Theme Compatibility Aliases (Dark Default) */
+    --bg-primary: #050505;
+    --bg-secondary: #0F0F11;
+    --bg-card: #16161A;
+    --text-primary: #FFFFFF;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border: rgba(255, 255, 255, 0.08);
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    --shadow-hover: 0 15px 40px rgba(212, 175, 55, 0.2);
+
+    /* Solar Accent Palette */
+    --solar-gold: #D4AF37;
+    --solar-gold-rgb: 212, 175, 55;
+    --solar-gold-glow: rgba(212, 175, 55, 0.15);
+    --solar-gold-hover: #F3C63F;
+    --green-primary: #D4AF37;
+    --green-light: #F3C63F;
+    --green-pale: rgba(212, 175, 55, 0.12);
+    --green-dark: #B59226;
+    
+    /* Premium Gradients */
+    --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #F5D365 100%);
+    --dark-gradient: linear-gradient(180deg, #0F0F11 0%, #050505 100%);
+    --glass-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+    
+    /* Glassmorphism Presets */
+    --glass-bg: rgba(22, 22, 26, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-border-glow: rgba(212, 175, 55, 0.25);
+    --glass-blur: blur(25px);
+    --glass-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    
+    /* Typography System */
+    --font-primary: 'Outfit', sans-serif;
+    --font-secondary: 'Plus Jakarta Sans', sans-serif;
+    
+    /* Scale & Layout Sizing */
+    --section-padding: 8rem 2rem;
+    --container-max: 1400px;
+    
+    /* Micro-Animations & Transitions */
+    --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-snappy: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --transition-camera: all 1.2s cubic-bezier(0.1, 0, 0.05, 1);
+}
+
+/* Light Mode Override (Clean High-Contrast Solar Style) */
+[data-theme="light"] {
+    --deep-black: #F8F9FA;
+    --charcoal-grey: #FFFFFF;
+    --card-bg-dark: #FFFFFF;
+    --white: #111827;
+    
+    --bg-primary: #F9FAFB;
+    --bg-secondary: #F3F4F6;
+    --bg-card: #FFFFFF;
+    --text-primary: #111827;
+    --text-secondary: #4B5563;
+    --text-muted: #6B7280;
+    --border: #E5E7EB;
+    --shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    --shadow-hover: 0 15px 35px rgba(212, 175, 55, 0.25);
+
+    --glass-bg: rgba(255, 255, 255, 0.88);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --glass-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+

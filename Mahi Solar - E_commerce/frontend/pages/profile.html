@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Profile — Mahi Solar</title>
+  <link rel="icon" href="../assets/images/logo-pic.png" type="image/png">
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/navbar.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<!-- UNIFIED FLOATING HEADER -->
+<header class="visible subpage-header">
+    <div class="navbar-container">
+        <div class="logo">
+            <a href="index.html">
+                <div class="logo-icon"><img src="../assets/images/logo-pic.png" alt="Mahi Solar"></div>
+                <div class="logo-text">MAHI <span>SOLAR</span></div>
+            </a>
+        </div>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="products.html" class="nav-link">Products</a></li>
+            <li><a href="calculator.html" class="nav-link">Solar Estimator</a></li>
+            <li><a href="blog.html" class="nav-link">Blog</a></li>
+            <li><a href="site-visit.html" class="nav-link">Book Site Visit</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="btn-icon" id="themeToggle" title="Toggle Theme"><i class="fas fa-sun"></i></button>
+            <a href="cart.html" class="btn-icon" title="View Cart">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-badge" id="cartBadgeCount">0</span>
+            </a>
+            <div id="authLinks" class="auth-links">
+                <a href="login.html" class="nav-link">Login</a>
+                <a href="calculator.html" class="btn-quote">Get Quote</a>
+            </div>
+            <div id="userDropdown" class="user-dropdown" style="display:none;">
+                <button class="user-btn"><i class="fas fa-user-circle"></i> <span id="userNameField">Profile</span> <i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-menu">
+                    <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                    <a href="orders.html"><i class="fas fa-box"></i> My Orders</a>
+                    <a href="#" onclick="handleLogout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </div>
+        </div>
+        <button class="mobile-toggle" id="hamburger" aria-label="Toggle Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<main style="padding-top:100px;min-height:70vh;">
+<div class="container" style="max-width:700px;margin:2rem auto 4rem;">
+  <h1 style="font-family:var(--font-primary);font-size:2.5rem;margin-bottom:2rem;">My <span class="text-green">Profile</span></h1>
+  <div style="background:rgba(255,255,255,0.01);border:1px solid rgba(255,255,255,0.05);padding:3rem;border-radius:20px;">
+    <div style="text-align:center;margin-bottom:2rem;">
+      <div style="width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,var(--solar-gold),#b8860b);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:2.5rem;color:#000;font-weight:700;" id="profileAvatar">?</div>
+      <div class="skeleton-shimmer skeleton-title" id="displayNameSkeleton" style="width:180px;height:24px;margin:0 auto 0.5rem auto;"></div>
+      <h2 id="profileDisplayName" style="display:none;"></h2>
+      <div class="skeleton-shimmer skeleton-text" id="emailSkeleton" style="width:140px;height:14px;margin:0 auto;"></div>
+      <p id="profileEmail" style="color:#888;font-size:0.9rem;display:none;"></p>
+    </div>
+    <form id="profileForm" onsubmit="event.preventDefault();saveProfile();" style="display:flex;flex-direction:column;gap:1.5rem;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div><label style="display:block;margin-bottom:0.3rem;color:#aaa;">First Name</label><input type="text" id="profFirst" class="filter-input" style="width:100%;" /></div>
+        <div><label style="display:block;margin-bottom:0.3rem;color:#aaa;">Last Name</label><input type="text" id="profLast" class="filter-input" style="width:100%;" /></div>
+      </div>
+      <div><label style="display:block;margin-bottom:0.3rem;color:#aaa;">Email</label><input type="email" id="profEmail" class="filter-input" style="width:100%;" /></div>
+      <div><label style="display:block;margin-bottom:0.3rem;color:#aaa;">Phone</label><input type="tel" id="profPhone" class="filter-input" style="width:100%;" /></div>
+      <div><label style="display:block;margin-bottom:0.3rem;color:#aaa;">Address</label><input type="text" id="profAddress" class="filter-input" style="width:100%;" /></div>
+      <div><label style="display:block;margin-bottom:0.3rem;color:#aaa;">City</label><input type="text" id="profCity" value="Surat" class="filter-input" style="width:100%;" /></div>
+      <button type="submit" class="btn-primary btn-block" style="padding:1rem;font-weight:700;border-radius:50px;"><i class="fas fa-save"></i> Save Profile</button>
+    </form>
+    <div style="margin-top:2rem;text-align:center;"><a href="orders.html" class="btn-outline" style="padding:0.8rem 2rem;border-radius:50px;text-decoration:none;"><i class="fas fa-box"></i> View My Orders</a></div>
+  </div>
+</div>
+</main>
+
+<footer class="footer"><div class="footer-container"><div class="footer-col"><div class="footer-logo"><img src="../assets/images/logo.png" alt="Logo" class="footer-logo-icon"><span>Mahi Solar</span></div><p>Leading solar energy provider in Surat, Gujarat.</p></div><div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="products.html">Products</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div></div><div class="footer-bottom"><p>© 2024 Mahi Solar. All rights reserved.</p></div></footer>
+<script src="../js/api.js"></script>
+<script src="../js/main.js"></script>
+<script>
+function showProfileData(userObj) {
+    const dSkel = document.getElementById('displayNameSkeleton');
+    const eSkel = document.getElementById('emailSkeleton');
+    if (dSkel) dSkel.style.display = 'none';
+    if (eSkel) eSkel.style.display = 'none';
+
+    const dispName = document.getElementById('profileDisplayName');
+    const emailField = document.getElementById('profileEmail');
+    if (dispName) { dispName.style.display = 'block'; dispName.classList.add('fade-in-content'); }
+    if (emailField) { emailField.style.display = 'block'; emailField.classList.add('fade-in-content'); }
+
+    document.getElementById('profFirst').value = userObj.first_name || '';
+    document.getElementById('profLast').value = userObj.last_name || '';
+    document.getElementById('profEmail').value = userObj.email || '';
+    document.getElementById('profPhone').value = userObj.phone || '';
+    document.getElementById('profAddress').value = userObj.address || '';
+    document.getElementById('profCity').value = userObj.city || 'Surat';
+    if (dispName) dispName.textContent = (userObj.first_name || '') + ' ' + (userObj.last_name || '') || userObj.username;
+    if (emailField) emailField.textContent = userObj.email || '';
+    document.getElementById('profileAvatar').textContent = (userObj.first_name || userObj.username || '?')[0].toUpperCase();
+}
+
+function loadProfile(){
+    const c = localStorage.getItem('user_profile');
+    if (c) {
+        try {
+            showProfileData(JSON.parse(c));
+        } catch(e) {}
+    }
+    fetch(`${API_BASE_URL}/accounts/profile/?format=json`, { headers: getAuthHeaders() })
+    .then(r => r.json())
+    .then(d => {
+        if (d.success) {
+            showProfileData(d.profile);
+        }
+    })
+    .catch(e => console.warn('Profile offline:', e));
+}
+function saveProfile(){const p={first_name:document.getElementById('profFirst').value,last_name:document.getElementById('profLast').value,email:document.getElementById('profEmail').value,phone:document.getElementById('profPhone').value,address:document.getElementById('profAddress').value,city:document.getElementById('profCity').value};const ex=JSON.parse(localStorage.getItem('user_profile')||'{}');localStorage.setItem('user_profile',JSON.stringify({...ex,...p}));updateGlobalUI();fetch(`${API_BASE_URL}/accounts/profile/`,{method:'POST',headers:getAuthHeaders(),body:JSON.stringify(p)}).then(r=>r.json()).then(d=>{alert(d.message||'Profile saved!');}).catch(e=>{console.error(e);alert('Profile saved locally!');});}
+loadProfile();
+</script>
+</body>
+</html>

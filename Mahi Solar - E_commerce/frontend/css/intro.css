@@ -1,0 +1,178 @@
+/* ===================================================
+   MAHI SOLAR – Cinematic Intro GSAP Styles
+   =================================================== */
+
+#intro-container {
+  width: 100vw;
+  height: calc(100vh + var(--navbar-height, 68px));
+  /* Fill the gap created by pulling it up */
+  position: relative;
+  overflow: hidden;
+  background: #0a0e17;
+  /* Deep galaxy space */
+  z-index: 9999;
+  color: #fff;
+  margin-top: calc(-1 * var(--navbar-height, 68px));
+  /* Pull up to cover the navbar natively */
+}
+
+.intro-scene {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.intro-headline {
+  font-size: 4.5rem;
+  font-weight: 800;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.intro-headline .highlight {
+  color: #ffb300;
+  text-shadow: 0 0 25px rgba(255, 179, 0, 0.7);
+}
+
+.glow {
+  text-shadow: 0 0 30px #ffb300, 0 0 60px #ff8f00;
+}
+
+.massive {
+  font-size: 6.5rem;
+}
+
+/* Scene 2 & 3 - Glowing Element */
+.glow-orb {
+  position: absolute;
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(circle, rgba(255, 179, 0, 0.7) 0%, transparent 70%);
+  opacity: 0.6;
+  filter: blur(60px);
+  z-index: -1;
+}
+
+/* Scene 3 - Solar Concept */
+.solar-concept {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.solar-concept .earth {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle at 30% 30%, #42a5f5, #1565c0);
+  border-radius: 50%;
+  box-shadow: inset -15px -15px 40px rgba(0, 0, 0, 0.8), 0 0 50px rgba(30, 136, 229, 0.6);
+  position: absolute;
+  z-index: 2;
+}
+
+.solar-concept .sunrays {
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  border: 4px dashed rgba(255, 179, 0, 0.4);
+  position: absolute;
+}
+
+.solar-concept .intro-headline {
+  position: absolute;
+  z-index: 3;
+  margin-top: 350px;
+}
+
+/* Scene 4 - Floating Panels */
+.floating-panels {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  perspective: 1000px;
+}
+
+.intro-panel {
+  width: 340px;
+  height: 220px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(255, 255, 255, 0.05);
+  position: absolute;
+  transform-style: preserve-3d;
+  border-radius: 12px;
+}
+
+.intro-panel::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: repeating-linear-gradient(0deg, rgba(255, 179, 0, 0.1) 0px, transparent 1px, transparent 20px),
+    repeating-linear-gradient(90deg, rgba(255, 179, 0, 0.1) 0px, transparent 1px, transparent 25px);
+  border-radius: 6px;
+}
+
+.intro-panel.p1 {
+  top: 15%;
+  left: 8%;
+  transform: rotateY(25deg) rotateX(15deg);
+}
+
+.intro-panel.p2 {
+  top: 55%;
+  right: 10%;
+  transform: rotateY(-20deg) rotateX(-10deg);
+}
+
+.intro-panel.p3 {
+  bottom: 5%;
+  left: 25%;
+  transform: rotateY(15deg) rotateX(20deg);
+}
+
+#scene4 .intro-headline {
+  position: absolute;
+  z-index: 10;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .intro-headline {
+    font-size: 2.5rem;
+  }
+
+  .massive {
+    font-size: 3.5rem;
+  }
+
+  .solar-concept .sunrays {
+    width: 300px;
+    height: 300px;
+  }
+
+  .solar-concept .intro-headline {
+    margin-top: 250px;
+  }
+
+  .intro-panel {
+    width: 200px;
+    height: 120px;
+  }
+}

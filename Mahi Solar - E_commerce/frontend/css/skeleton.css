@@ -1,0 +1,160 @@
+/* 
+ * MAHI SOLAR — PREMIUM SKELETON LOADING SYSTEM
+ * GPU-accelerated, Stripe/Apple style shimmer loaders blending with the active theme.
+ */
+
+/* Core Shimmer Block */
+.skeleton-shimmer {
+    background: rgba(255, 255, 255, 0.03);
+    position: relative;
+    overflow: hidden;
+    will-change: transform;
+    transform: translate3d(0, 0, 0); /* Force GPU acceleration */
+    pointer-events: none;
+    user-select: none;
+}
+
+[data-theme="light"] .skeleton-shimmer {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.skeleton-shimmer::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.04) 20%,
+        rgba(255, 255, 255, 0.08) 60%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    animation: shimmer-anim 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+[data-theme="light"] .skeleton-shimmer::after {
+    background-image: linear-gradient(
+        90deg,
+        rgba(200, 200, 200, 0) 0%,
+        rgba(200, 200, 200, 0.25) 20%,
+        rgba(200, 200, 200, 0.4) 60%,
+        rgba(200, 200, 200, 0) 100%
+    );
+}
+
+@keyframes shimmer-anim {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Base Component Shapes */
+.skeleton-circle {
+    border-radius: 50%;
+}
+
+.skeleton-rect {
+    border-radius: 8px;
+}
+
+.skeleton-pill {
+    border-radius: 9999px;
+}
+
+/* Sizing Helpers */
+.skeleton-image {
+    width: 100%;
+    height: 100%;
+}
+
+.skeleton-text {
+    height: 12px;
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+.skeleton-text.short {
+    width: 40%;
+}
+
+.skeleton-text.medium {
+    width: 70%;
+}
+
+.skeleton-title {
+    height: 24px;
+    margin-bottom: 16px;
+    width: 60%;
+}
+
+.skeleton-button {
+    height: 40px;
+    width: 120px;
+    border-radius: 50px;
+}
+
+.skeleton-badge {
+    height: 22px;
+    width: 70px;
+}
+
+.skeleton-chip {
+    height: 32px;
+    width: 80px;
+    display: inline-block;
+}
+
+/* Composite Card Skeleton Layouts */
+.skeleton-product-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-bottom: 16px;
+    box-shadow: var(--shadow);
+}
+
+.skeleton-blog-card {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Tables and Inquiries Skeletons */
+.skeleton-table-cell {
+    height: 16px;
+    margin: 8px 0;
+    width: 80%;
+}
+
+/* prefers-reduced-motion fallback */
+@media (prefers-reduced-motion: reduce) {
+    .skeleton-shimmer::after {
+        animation: none;
+        background: none;
+    }
+}
+
+/* Dynamic fade-in content classes */
+.fade-in-content {
+    animation: fade-in-keyframes 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fade-in-keyframes {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

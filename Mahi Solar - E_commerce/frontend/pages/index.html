@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahi Solar — Premium Renewable Energy Technology</title>
+    
+    <!-- SEO Optimization -->
+    <meta name="description" content="Mahi Solar is a premium renewable energy technology firm engineering smart, high-efficiency solar panel packages, calculators, and custom installations.">
+    <link rel="icon" href="../assets/images/logo-pic.png" type="image/png">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        /* Base page styling specifically structured for the scroll-driven environment */
+        body {
+            background-color: var(--deep-black);
+            color: var(--white);
+            font-family: var(--font-secondary);
+            margin: 0;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* 3D WebGL Canvas Layer */
+        #webgl-canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+            pointer-events: none; /* Let clicks pass to content when needed */
+        }
+
+        #webgl-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* Scroll Animation Pin Zones */
+        .scroll-section {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            z-index: 2;
+        }
+
+        /* Stage Content Fades */
+        .stage-content {
+            opacity: 0;
+            transform: translateY(30px);
+            text-align: center;
+            max-width: 900px;
+            padding: 0 2rem;
+            pointer-events: none;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .stage-content.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        h2.cinematic-title {
+            font-family: var(--font-primary);
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.7) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-glow-text {
+            color: var(--solar-gold);
+            text-shadow: 0 0 20px var(--solar-gold-glow);
+        }
+
+        /* Glassmorphism Floating Cards */
+        .glass-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 2rem;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            transition: var(--transition-smooth);
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.1), transparent 70%);
+            opacity: 0;
+            transition: var(--transition-snappy);
+        }
+
+        .glass-card:hover::before {
+            opacity: 1;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--glass-border-glow);
+            box-shadow: var(--glass-shadow);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-title {
+            font-family: var(--font-primary);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .card-desc {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Trust Metrics Row */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .metric-item {
+            text-align: center;
+        }
+
+        .metric-number {
+            font-family: var(--font-primary);
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: var(--solar-gold);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 30px var(--solar-gold-glow);
+        }
+
+        .metric-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+        }
+
+        /* Stage 5: Hero Screen Layout */
+        .hero-layout {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            padding: 0 2rem;
+            z-index: 5;
+        }
+
+        .hero-meta {
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: var(--solar-gold);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title {
+            font-family: var(--font-primary);
+            font-size: 5rem;
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+        }
+
+        .hero-desc {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: var(--white);
+            font-family: var(--font-primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.8rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: var(--transition-snappy);
+            backdrop-filter: var(--glass-blur);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            h2.cinematic-title { font-size: 2.2rem; }
+            .hero-title { font-size: 3rem; }
+            .glass-cards-grid, .metrics-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Navigation Bar -->
+    <header id="main-header" class="visible">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="index.html">
+                    <div class="logo-icon"></div>
+                    <div class="logo-text">MAHI <span>SOLAR</span></div>
+                </a>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="products.html" class="nav-link">Products</a></li>
+                <li><a href="calculator.html" class="nav-link">Calculator</a></li>
+                <li><a href="blog.html" class="nav-link">Blog</a></li>
+                <li><a href="site-visit.html" class="nav-link">Book Site Visit</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-icon" id="themeToggle" title="Toggle Theme"><i class="fas fa-sun"></i></button>
+                <a href="cart.html" class="btn-icon" title="Shopping Cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-badge" id="cartBadgeCount">0</span>
+                </a>
+                <div id="authLinks" class="auth-links">
+                    <a href="login.html" class="btn-quote" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; box-shadow: none;">Login</a>
+                </div>
+                <div id="userDropdown" class="user-dropdown" style="display: none;">
+                    <button class="user-btn">
+                        <i class="fas fa-user-circle"></i> <span id="userNameField">Profile</span> <i class="fas fa-chevron-down" style="font-size: 0.75rem;"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                        <a href="orders.html"><i class="fas fa-box"></i> My Orders</a>
+                        <a href="#" onclick="handleLogout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+            <button class="mobile-toggle" id="hamburger" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- WebGL Three.js Target -->
+    <div id="webgl-canvas-container">
+        <canvas id="webgl-canvas"></canvas>
+    </div>
+
+    <!-- Scroll Timeline Modules -->
+    
+    <!-- Stage 1 View: Particles Assembly -->
+    <section class="scroll-section" id="stage1">
+        <div class="stage-content active" id="content1">
+            <h2 class="cinematic-title">Engineering The Future<br>Of Solar Technology</h2>
+            <p style="color: rgba(255,255,255,0.5);">Scroll to begin the assembly sequence</p>
+        </div>
+    </section>
+
+    <!-- Stage 2 View: Camera sweeps surface -->
+    <section class="scroll-section" id="stage2">
+        <div class="stage-content" id="content2">
+            <h2 class="cinematic-title">Powering Tomorrow With<br><span class="gold-glow-text">Clean Solar Energy</span></h2>
+        </div>
+    </section>
+
+    <!-- Stage 3 View: Glass Cards split -->
+    <section class="scroll-section" id="stage3">
+        <div class="stage-content" id="content3">
+            <h2 class="cinematic-title" style="font-size: 2.8rem; margin-bottom: 3rem;">Tailored Solutions For Every Environment</h2>
+            <div class="glass-cards-grid">
+                <div class="glass-card">
+                    <div class="card-icon">🏠</div>
+                    <div class="card-title">Residential</div>
+                    <div class="card-desc">Sleek, high-efficiency rooftop structures blending with architectural styles. Cut monthly tariffs up to 90%.</div>
+                </div>
+                <div class="glass-card">
+                    <div class="card-icon">🏢</div>
+                    <div class="card-title">Commercial</div>
+                    <div class="card-desc">Scalable PV setups optimizing operational expenditure with high ROI rates and tax exemptions.</div>
+                </div>
+                <div class="glass-card">
+                    <div class="card-icon">🏭</div>
+                    <div class="card-title">Industrial</div>
+                    <div class="card-desc">Heavy-duty microgrid arrays and structural frameworks providing clean, uninterrupted baseload power.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stage 4 View: Trust Metrics Reveal -->
+    <section class="scroll-section" id="stage4">
+        <div class="stage-content" id="content4">
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <div class="metric-number">500+</div>
+                    <div class="metric-label">Installations</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-number">10+</div>
+                    <div class="metric-label">Years Experience</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-number">1000+</div>
+                    <div class="metric-label">Happy Customers</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stage 5 View: Seamless transition to Hero Section -->
+    <section class="scroll-section" id="stage5">
+        <div class="hero-layout">
+            <div class="hero-meta">Clean Energy Ecosystem</div>
+            <h1 class="hero-title">MAHI SOLAR</h1>
+            <p class="hero-desc">We combine high-performance materials, dynamic software calculations, and stellar engineering to power residential and commercial operations.</p>
+            <div class="hero-cta">
+                <a href="products.html" class="btn-quote" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Explore Ecosystem</a>
+                <a href="calculator.html" class="btn-secondary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Calculate Savings</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CDN Libraries (Three.js + GSAP + ScrollTrigger) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Add GLTFLoader and DRACOLoader helpers -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/DRACOLoader.js"></script>
+    
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Animations Timeline Controller -->
+    <script src="../js/api.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/intro/solar_scene.js"></script>
+    <script src="../js/intro/intro.js"></script>
+
+</body>
+</html>

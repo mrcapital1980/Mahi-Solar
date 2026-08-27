@@ -1,0 +1,35 @@
+intro idea but as a reference : crate html,css and js file for : Create a premium scroll-driven 3D intro for Mahi Solar.
+The experience should feel like a Tesla product reveal mixed with Apple presentation design.
+The intro must communicate:
+
+Solar technology
+Engineering excellence
+Innovation
+Trust
+Clean energy
+Do not create a movie trailer.
+Do not create a space theme.
+Do not create gaming animations.
+The entire intro should revolve around a large 3D solar panel structure that evolves as the user scrolls.
+Stage 1:
+Golden energy particles assemble into a premium 3D solar panel.
+Stage 2:
+Energy flows through the solar cells while the camera slowly glides across the surface.
+Reveal:
+"Powering Tomorrow With Clean Solar Energy"
+Stage 3:
+The solar panel transforms into three floating glass cards:
+Residential
+Commercial
+Industrial
+Stage 4:
+Cards move aside and reveal trust metrics:
+500+ Installations
+10+ Years Experience
+1000+ Happy Customers
+Stage 5:
+The solar structure seamlessly transforms into the homepage hero background.
+Navbar and hero content fade in naturally.
+The user should feel that the intro became the website.
+Use premium glassmorphism, subtle parallax, GSAP ScrollTrigger, 3D transforms, blur reveals, fade animations, and modern typography.
+The result should feel like a premium renewable-energy technology company rather than a traditional solar installer. 
