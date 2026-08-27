@@ -1,7 +1,7 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.conf import settings
-from django.conf.urls.static import static
+from django.views.static import serve
 from products.views import index
 from rest_framework.routers import DefaultRouter
 from products.api import ProductViewSet, CategoryViewSet
@@ -29,4 +29,5 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('calculator/', include('calculator.urls')),
     path('api/', include(router.urls)),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+]
