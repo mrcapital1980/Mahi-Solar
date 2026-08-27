@@ -275,36 +275,35 @@
 </head>
 <body>
 
-    <!-- Floating Navigation Bar -->
-    <header id="main-header" class="visible">
+    <!-- UNIFIED FLOATING HEADER -->
+    <header class="visible subpage-header">
         <div class="navbar-container">
             <div class="logo">
                 <a href="index.html">
-                    <div class="logo-icon"></div>
+                    <div class="logo-icon"><img src="../assets/images/logo-pic.png" alt="Mahi Solar"></div>
                     <div class="logo-text">MAHI <span>SOLAR</span></div>
                 </a>
             </div>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html" class="nav-link active">Home</a></li>
                 <li><a href="products.html" class="nav-link">Products</a></li>
-                <li><a href="calculator.html" class="nav-link">Calculator</a></li>
+                <li><a href="calculator.html" class="nav-link">Solar Estimator</a></li>
                 <li><a href="blog.html" class="nav-link">Blog</a></li>
                 <li><a href="site-visit.html" class="nav-link">Book Site Visit</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
             <div class="nav-actions">
                 <button class="btn-icon" id="themeToggle" title="Toggle Theme"><i class="fas fa-sun"></i></button>
-                <a href="cart.html" class="btn-icon" title="Shopping Cart">
-                    <i class="fas fa-shopping-cart"></i>
+                <a href="cart.html" class="btn-icon" title="View Cart">
+                    <i class="fas fa-shopping-bag"></i>
                     <span class="cart-badge" id="cartBadgeCount">0</span>
                 </a>
                 <div id="authLinks" class="auth-links">
-                    <a href="login.html" class="btn-quote" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; box-shadow: none;">Login</a>
+                    <a href="login.html" class="nav-link">Login</a>
+                    <a href="calculator.html" class="btn-quote">Get Quote</a>
                 </div>
-                <div id="userDropdown" class="user-dropdown" style="display: none;">
-                    <button class="user-btn">
-                        <i class="fas fa-user-circle"></i> <span id="userNameField">Profile</span> <i class="fas fa-chevron-down" style="font-size: 0.75rem;"></i>
-                    </button>
+                <div id="userDropdown" class="user-dropdown" style="display:none;">
+                    <button class="user-btn"><i class="fas fa-user-circle"></i> <span id="userNameField">Profile</span> <i class="fas fa-chevron-down"></i></button>
                     <div class="dropdown-menu">
                         <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
                         <a href="orders.html"><i class="fas fa-box"></i> My Orders</a>
@@ -313,9 +312,7 @@
                 </div>
             </div>
             <button class="mobile-toggle" id="hamburger" aria-label="Toggle Menu">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </button>
         </div>
     </header>
