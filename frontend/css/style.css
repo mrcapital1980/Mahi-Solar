@@ -1408,6 +1408,18 @@ p, li, td {
   color: #0F172A !important;
 }
 
+[data-theme="light"] .cinematic-title,
+[data-theme="light"] .intro-heading,
+[data-theme="light"] .hero-title,
+[data-theme="light"] h2.cinematic-title {
+  background: linear-gradient(180deg, #0F172A 0%, #334155 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: #0F172A !important;
+  filter: none !important;
+}
+
+
 
 
 

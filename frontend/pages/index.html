@@ -77,9 +77,17 @@
             line-height: 1.2;
             letter-spacing: -1px;
             margin-bottom: 1.5rem;
-            background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.7) 100%);
+            background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.8) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.8));
+        }
+
+        [data-theme="light"] h2.cinematic-title {
+            background: linear-gradient(180deg, #0F172A 0%, #334155 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            filter: none !important;
         }
 
         .gold-glow-text {
@@ -148,7 +156,23 @@
         .card-desc {
             font-size: 0.95rem;
             line-height: 1.6;
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--text-secondary);
+        }
+
+        [data-theme="light"] .card-title {
+            color: #0F172A !important;
+        }
+
+        [data-theme="light"] .card-desc {
+            color: #334155 !important;
+        }
+
+        [data-theme="light"] .metric-number {
+            color: #0F172A !important;
+        }
+
+        [data-theme="light"] .metric-label {
+            color: #64748B !important;
         }
 
         /* Trust Metrics Row */
