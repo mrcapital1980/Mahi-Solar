@@ -28,6 +28,7 @@ header.subpage-header {
     -webkit-backdrop-filter: var(--glass-blur);
     border-radius: 100px;
     box-shadow: var(--glass-shadow);
+    position: relative;
 }
 
 .logo a {
@@ -71,9 +72,12 @@ header.subpage-header {
 }
 
 .nav-menu {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     align-items: center;
-    gap: 2.2rem;
+    gap: 2rem;
     margin: 0;
     padding: 0;
     list-style: none;
