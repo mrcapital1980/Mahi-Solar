@@ -102,14 +102,5 @@ document.addEventListener('DOMContentLoaded', () => {
         stagger: 0.2,
         ease: "power3.out"
     });
-
-    // Mobile Hamburger Menu toggle click binding
-    const toggleBtn = document.querySelector('.mobile-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    if (toggleBtn && navMenu) {
-        toggleBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            toggleBtn.classList.toggle('active');
-        });
-    }
 });
+

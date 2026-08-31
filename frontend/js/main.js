@@ -20,26 +20,31 @@ document.addEventListener('DOMContentLoaded', function () {
   const hamburger = document.getElementById('hamburger');
   const navMenu = document.getElementById('navMenu');
   if (hamburger && navMenu) {
-    hamburger.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-      hamburger.classList.toggle('open');
+    hamburger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isActive = navMenu.classList.toggle('active');
+      hamburger.classList.toggle('open', isActive);
+      hamburger.classList.toggle('active', isActive);
     });
     // Close menu when link is clicked
     navMenu.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', () => {
         navMenu.classList.remove('active');
         hamburger.classList.remove('open');
+        hamburger.classList.remove('active');
       });
     });
     // Close on outside click
     document.addEventListener('click', (e) => {
       const header = document.getElementById('navbar') || document.querySelector('header');
-      if (header && !header.contains(e.target)) {
+      if (header && !header.contains(e.target) && !navMenu.contains(e.target)) {
         navMenu.classList.remove('active');
         hamburger.classList.remove('open');
+        hamburger.classList.remove('active');
       }
     });
   }
+
 
   /* ---- THEME TOGGLE ---- */
   const themeToggle = document.getElementById('themeToggle');

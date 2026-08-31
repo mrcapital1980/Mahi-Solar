@@ -72,16 +72,76 @@
 
         h2.cinematic-title {
             font-family: var(--font-primary);
-            font-size: 3.5rem;
+            font-size: clamp(1.75rem, 5vw, 3.5rem);
             font-weight: 800;
             line-height: 1.2;
-            letter-spacing: -1px;
+            letter-spacing: -0.5px;
             margin-bottom: 1.5rem;
             background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.8) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.8));
         }
+
+        .hero-layout {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 820px;
+            margin: 0 auto;
+            padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 3.5vw, 2.5rem);
+            z-index: 5;
+            text-align: center;
+            background: rgba(10, 14, 23, 0.78);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 179, 0, 0.35);
+            border-radius: 28px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 179, 0, 0.15);
+            transition: var(--transition-smooth);
+            box-sizing: border-box;
+        }
+
+        .hero-title {
+            font-family: var(--font-primary);
+            font-size: clamp(2rem, 6.5vw, 4.8rem);
+            font-weight: 900;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 1.2rem;
+            color: #FFFFFF;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9), 0 0 10px rgba(0, 0, 0, 0.8);
+            word-wrap: break-word;
+        }
+
+        .hero-desc {
+            font-size: clamp(0.95rem, 2vw, 1.2rem);
+            color: #FFE082;
+            max-width: 680px;
+            margin-bottom: 2.2rem;
+            line-height: 1.6;
+            font-weight: 500;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95);
+        }
+
+        @media (max-width: 992px) {
+            .glass-cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            h2.cinematic-title { font-size: clamp(1.5rem, 6vw, 2.2rem); }
+            .hero-title { font-size: clamp(1.8rem, 8vw, 2.8rem); }
+            .glass-cards-grid, .metrics-grid {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+        }
+
 
         [data-theme="light"] h2.cinematic-title {
             background: linear-gradient(180deg, #0F172A 0%, #334155 100%) !important;
@@ -349,11 +409,14 @@
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html" class="nav-link active">Home</a></li>
                 <li><a href="products.html" class="nav-link">Products</a></li>
-                <li><a href="calculator.html" class="nav-link">Solar Estimator</a></li>
+                <li><a href="calculator.html" class="nav-link">Estimator</a></li>
                 <li><a href="blog.html" class="nav-link">Blog</a></li>
-                <li><a href="site-visit.html" class="nav-link">Book Site Visit</a></li>
+                <li><a href="site-visit.html" class="nav-link">Site Visit</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li class="mobile-only-quote"><a href="calculator.html" class="nav-link btn-quote-mobile">Get Quote</a></li>
             </ul>
+
+
             <div class="nav-actions">
                 <button class="btn-icon" id="themeToggle" title="Toggle Theme"><i class="fas fa-sun"></i></button>
                 <a href="cart.html" class="btn-icon" title="View Cart">

@@ -303,28 +303,8 @@ ul { list-style: none; }
   color: var(--green-primary);
 }
 
-.nav-menu {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  flex: 1;
-}
-
-.nav-link {
-  padding: 8px 12px;
-  border-radius: var(--radius-sm);
-  font-weight: 500;
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  transition: all var(--transition);
-}
-
-.nav-link:hover {
-  color: var(--green-primary);
-  background: var(--green-pale);
-}
-
 .nav-actions {
+
   display: flex;
   align-items: center;
   gap: 8px;
@@ -452,26 +432,8 @@ ul { list-style: none; }
   color: var(--green-primary);
 }
 
-/* Hamburger */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-}
-
-.hamburger span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--text-primary);
-  border-radius: 2px;
-  transition: all var(--transition);
-}
 /* ---- MESSAGES ---- */
+
 .messages-container { position: fixed; top: calc(var(--navbar-height) + 12px); right: 20px; z-index: 999; display: flex; flex-direction: column; gap: 8px; max-width: 360px; }
 .alert { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 500; box-shadow: var(--shadow); animation: slideIn 0.3s ease; }
 @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
@@ -1118,8 +1080,67 @@ main { padding-top: var(--navbar-height); }
 .empty-state h3 { font-size: 1.3rem; margin-bottom: 8px; }
 .empty-state p { color: var(--text-muted); margin-bottom: 20px; }
 
-/* ---- RESPONSIVE ---- */
+/* ===================================================
+   MAHI SOLAR — COMPREHENSIVE RESPONSIVE DESIGN SYSTEM
+   Full multi-breakpoint optimization: 320px to 1920px
+   =================================================== */
+
+/* ---- GLOBAL VIEWPORT SAFETY RESET ---- */
+html, body {
+  max-width: 100vw;
+  overflow-x: clip;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+img, video, iframe, canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Touch Target Minimum & Base Input Ergonomics */
+input, select, textarea, button, .btn-primary, .btn-secondary, .btn-outline, .btn-add-cart {
+  min-height: var(--touch-target-min, 44px);
+  touch-action: manipulation;
+}
+
+/* Fluid Responsive Typography Classes */
+h1, .h1 { font-size: var(--font-size-h1, clamp(2rem, 5vw, 3.8rem)); line-height: 1.15; }
+h2, .h2 { font-size: var(--font-size-h2, clamp(1.6rem, 3.8vw, 2.6rem)); line-height: 1.25; }
+h3, .h3 { font-size: var(--font-size-h3, clamp(1.2rem, 2.5vw, 1.8rem)); line-height: 1.3; }
+
+/* Responsive Table Wrapper */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 1.5rem;
+  border-radius: var(--radius-sm);
+}
+
+/* ---- RESPONSIVE BREAKPOINTS ---- */
+
+/* 1. Large Desktops & Ultra-Wide (>= 1400px) */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1360px;
+    margin: 0 auto;
+  }
+}
+
+/* 2. Standard Laptops / Small Desktops (1025px - 1399px) */
+@media (max-width: 1399px) and (min-width: 1025px) {
+  .products-grid { grid-template-columns: repeat(3, 1fr); }
+  .blog-grid { grid-template-columns: repeat(3, 1fr); }
+  .glass-cards-grid { gap: 1.5rem; }
+}
+
+/* 3. Tablets / Small Laptops (769px - 1024px) */
 @media (max-width: 1024px) {
+  .products-layout { grid-template-columns: 220px 1fr; gap: 20px; }
   .products-grid { grid-template-columns: repeat(2, 1fr); }
   .hero { flex-direction: column; min-height: auto; padding: 100px 20px 60px; text-align: center; }
   .hero-stats { justify-content: center; }
@@ -1128,45 +1149,164 @@ main { padding-top: var(--navbar-height); }
   .features-grid { grid-template-columns: repeat(2, 1fr); }
   .categories-grid { grid-template-columns: repeat(3, 1fr); }
   .testimonials-grid { grid-template-columns: 1fr 1fr; }
-  .footer-container { grid-template-columns: 1fr 1fr; }
+  .footer-container { grid-template-columns: 1fr 1fr; gap: 2rem; }
   .why-grid { grid-template-columns: 1fr; }
   .calculator-grid { grid-template-columns: 1fr; }
   .results-grid { grid-template-columns: repeat(2, 1fr); }
   .blog-grid { grid-template-columns: repeat(2, 1fr); }
-  .contact-grid { grid-template-columns: 1fr; }
-  .site-visit-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+  .site-visit-grid { grid-template-columns: 1fr; gap: 32px; }
+  .cart-layout { grid-template-columns: 1fr; gap: 24px; }
+  .checkout-layout { grid-template-columns: 1fr; gap: 24px; }
+  .order-detail-grid { grid-template-columns: 1fr; gap: 20px; }
+  .profile-grid { grid-template-columns: 200px 1fr; gap: 20px; }
+  .blog-detail-grid { grid-template-columns: 1fr; gap: 24px; }
 }
+
+/* 4. Tablets & Large Mobile (577px - 768px) */
 @media (max-width: 768px) {
-  .nav-menu { display: none; position: fixed; top: var(--navbar-height); left: 0; right: 0; background: var(--bg-primary); flex-direction: column; padding: 20px; border-bottom: 1px solid var(--border); gap: 4px; z-index: 999; }
-  .nav-menu.active { display: flex; }
-  .hamburger { display: flex; }
-  .btn-nav-login, .btn-nav-register { display: none; }
-  .hero h1 { font-size: 2.2rem; }
+  main { padding-top: calc(var(--navbar-height, 68px) + 12px); }
+  .hero h1 { font-size: clamp(2rem, 6vw, 2.8rem); }
+  
+  /* Products & Sidebar Layout */
+  .mobile-filter-btn-wrap { display: block !important; }
   .products-layout { grid-template-columns: 1fr; }
-  .filters-sidebar { display: none; }
-  .products-grid { grid-template-columns: 1fr 1fr; }
-  .product-detail-grid { grid-template-columns: 1fr; }
-  .cart-layout { grid-template-columns: 1fr; }
-  .checkout-layout { grid-template-columns: 1fr; }
-  .order-detail-grid { grid-template-columns: 1fr; }
-  .profile-grid { grid-template-columns: 1fr; }
-  .blog-detail-grid { grid-template-columns: 1fr; }
-  .form-grid-2 { grid-template-columns: 1fr; }
-  .categories-grid { grid-template-columns: repeat(2, 1fr); }
+  .filters-sidebar {
+    display: none;
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .filters-sidebar.active {
+    display: block !important;
+  }
+
+  
+  .products-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .product-detail-grid { grid-template-columns: 1fr; gap: 24px; }
+  .main-image img { height: 280px; }
+  
+  /* Forms & Grids */
+  .form-grid-2 { grid-template-columns: 1fr; gap: 12px; }
+  .categories-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
   .testimonials-grid { grid-template-columns: 1fr; }
-  .footer-container { grid-template-columns: 1fr; }
+  .footer-container { grid-template-columns: 1fr; gap: 2rem; text-align: left; }
+  .profile-grid { grid-template-columns: 1fr; }
+  .calc-info-cards { grid-template-columns: 1fr; gap: 16px; }
+  .slot-options { grid-template-columns: repeat(2, 1fr); }
+  
+  /* Cart & Orders Table Adjustments */
+  .cart-table th, .orders-table th { font-size: 0.78rem; padding: 8px 10px; }
+  .cart-table td, .orders-table td { padding: 10px 8px; font-size: 0.85rem; }
+  .cart-product { gap: 8px; }
+  .cart-product img { width: 50px; height: 50px; }
+
   .calc-cta-inner { flex-direction: column; text-align: center; }
   .wa-label { display: none; }
-  .whatsapp-btn { padding: 14px; border-radius: 50%; }
+  .whatsapp-btn {
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 14px;
+    border-radius: 50px;
+    font-size: 0.82rem;
+  }
 }
-@media (max-width: 480px) {
-  .products-grid { grid-template-columns: 1fr; }
-  .blog-grid { grid-template-columns: 1fr; }
-  .hero h1 { font-size: 1.8rem; }
-  .results-grid { grid-template-columns: 1fr 1fr; }
-  .section { padding: 40px 0; }
-  .calc-info-cards { grid-template-columns: 1fr; }
+
+/* 5. Mobile Devices (320px - 576px) */
+@media (max-width: 576px) {
+  .section { padding: 32px 0; }
+  .hero { padding: 90px 16px 40px; }
+  .hero h1 { font-size: clamp(1.75rem, 7vw, 2.2rem); }
+  
+  .glass-cards-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+  .products-grid { grid-template-columns: 1fr; gap: 16px; }
+  .blog-grid { grid-template-columns: 1fr; gap: 16px; }
+  .categories-grid { grid-template-columns: 1fr; }
+  .results-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  
+  .slot-options { grid-template-columns: 1fr; }
+  
+  .auth-section { padding: 30px 12px; }
+  .auth-card { padding: 24px 18px; border-radius: 16px; }
+  
+  .cart-summary, .checkout-summary, .calc-form-card, .calc-results {
+    padding: 18px 14px;
+    border-radius: 16px;
+  }
+  
+  .success-card, .payment-card-center {
+    padding: 24px 16px;
+    border-radius: 16px;
+  }
+
+  .whatsapp-btn {
+    bottom: 16px;
+    right: 16px;
+    padding: 10px 12px;
+    font-size: 0.8rem;
+  }
+
+  /* Compact Cart Table on Mobile */
+  .cart-table th:nth-child(2),
+  .cart-table td:nth-child(2) {
+    display: none; /* Hide unit price column on ultra-compact mobile */
+  }
 }
+
+/* 6. Ultra-Small Mobile (320px - 374px) */
+@media (max-width: 374px) {
+  .hero h1 { font-size: 1.6rem; }
+  .results-grid { grid-template-columns: 1fr; }
+  .btn-primary, .btn-secondary {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  .add-to-cart-section { flex-direction: column; }
+}
+
+/* ---- INLINE GRID & LAYOUT RESPONSIVE OVERRIDES ---- */
+@media (max-width: 768px) {
+  .contact-grid,
+  .checkout-layout,
+  .cart-layout,
+  .site-visit-grid,
+  .form-grid-2,
+  .form-grid-3,
+  .cart-totals-panel,
+  .checkout-summary,
+  .contact-form-card,
+  [style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+
+  .site-visit-card,
+  .contact-form-card,
+  .cart-totals-panel,
+  .checkout-summary,
+  .auth-card,
+  [style*="padding: 3.5rem"],
+  [style*="padding: 3rem"],
+  [style*="padding: 2.5rem"],
+  [style*="padding:2.5rem"],
+  [style*="padding: 2rem"] {
+    padding: clamp(1.2rem, 4vw, 2rem) !important;
+    border-radius: 16px !important;
+  }
+
+  .cart-totals-panel,
+  .checkout-summary,
+  .cart-summary {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+
 
 /* ===================================================
    MAHI SOLAR — HIGH CONTRAST & LIGHT THEME POLISH
