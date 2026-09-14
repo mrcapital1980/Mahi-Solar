@@ -96,7 +96,7 @@ function updateGlobalUI() {
         const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
         cartBadge.textContent = totalItems;
         if (totalItems > 0) {
-            cartBadge.style.display = 'inline-block';
+            cartBadge.style.display = 'flex';
         } else {
             cartBadge.style.display = 'none';
         }
